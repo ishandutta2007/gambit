@@ -79,7 +79,7 @@ gSpace& gSpace::operator=(const gSpace & rhs)
   return *this;
 }
 
-int gSpace::Dmnsn(void) const
+int gSpace::Dmnsn() const
 {
   return Variables.Length();
 }

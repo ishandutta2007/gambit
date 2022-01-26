@@ -50,7 +50,7 @@ protected:
 class FunctionMinimizerError : public Exception {
 public:
   virtual ~FunctionMinimizerError() throw() { }
-  const char *what(void) const throw() 
+  const char *what() const throw() 
   { return "Internal error in function minimization"; }
 };
 
@@ -63,7 +63,7 @@ public:
 		   const Vector<double> &x, double &f,
 		   Vector<double> &gradient, double step_size,
 		   double p_tol) = 0;
-  virtual void Restart(void) = 0;
+  virtual void Restart() = 0;
 
   virtual bool Iterate(const Function &fdf,
 		       Vector<double> &x, double &f,
@@ -80,7 +80,7 @@ public:
 	   const Vector<double> &x, double &f,
 	   Vector<double> &gradient, double step_size,
 	   double p_tol);
-  void Restart(void);
+  void Restart();
 
   bool Iterate(const Function &fdf,
 	       Vector<double> &x, double &f,

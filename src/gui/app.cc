@@ -34,11 +34,11 @@
 #include "app.h"
 #include "gameframe.h"
 
-gbtApplication::gbtApplication(void)
+gbtApplication::gbtApplication()
   : m_fileHistory(10)
 { }
 
-bool gbtApplication::OnInit(void)
+bool gbtApplication::OnInit()
 {
 #include "bitmaps/gambitbig.xpm"
   wxConfigBase::Set(new wxConfig(_T("Gambit"), _T("Gambit")));
@@ -140,7 +140,7 @@ void gbtApplication::SetCurrentDir(const wxString &p_dir)
   wxConfigBase::Get()->Write(_T("/General/CurrentDirectory"), p_dir);
 }
 
-bool gbtApplication::AreDocumentsModified(void) const
+bool gbtApplication::AreDocumentsModified() const
 {
   for (int i = 1; i <= m_documents.Length(); i++) {
     if (m_documents[i]->IsModified()) {

@@ -69,7 +69,7 @@ class gbtProfileListPanel : public wxPanel, public gbtGameView {
 private:
   wxWindow *m_behavProfiles, *m_mixedProfiles;
 
-  void OnUpdate(void) { }
+  void OnUpdate() { }
 
 public:
   gbtProfileListPanel(wxWindow *p_parent, gbtGameDocument *p_doc);
@@ -125,7 +125,7 @@ private:
   wxStaticText *m_description;
 
   void OnChoice(wxCommandEvent &);
-  void OnUpdate(void);
+  void OnUpdate();
 
 public:
   gbtAnalysisNotebook(wxWindow *p_parent, gbtGameDocument *p_doc);
@@ -171,7 +171,7 @@ void gbtAnalysisNotebook::OnChoice(wxCommandEvent &p_event)
   m_doc->SetProfileList(p_event.GetSelection() + 1);
 }
 
-void gbtAnalysisNotebook::OnUpdate(void)
+void gbtAnalysisNotebook::OnUpdate()
 {
   m_choices->Clear();
   for (int i = 1; i <= m_doc->NumProfileLists(); i++) {
@@ -319,7 +319,7 @@ gbtGameFrame::~gbtGameFrame()
 }
 
 
-void gbtGameFrame::OnUpdate(void)
+void gbtGameFrame::OnUpdate()
 {
   std::string gameTitle;
   gameTitle = m_doc->GetGame()->GetTitle();
@@ -432,7 +432,7 @@ static void AppendBitmapItem(wxMenu *p_menu,
   p_menu->Append(item);
 }
 
-void gbtGameFrame::MakeMenus(void)
+void gbtGameFrame::MakeMenus()
 {
   wxMenu *fileMenu = new wxMenu;
   
@@ -589,7 +589,7 @@ void gbtGameFrame::MakeMenus(void)
   wxGetApp().AddMenu(GetMenuBar()->GetMenu(0));
 }
 
-void gbtGameFrame::MakeToolbar(void)
+void gbtGameFrame::MakeToolbar()
 {
   wxToolBar *toolBar = CreateToolBar(wxTB_HORIZONTAL | wxTB_FLAT);
   toolBar->SetMargins(4, 4);

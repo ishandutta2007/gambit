@@ -38,7 +38,7 @@ HeuristicPolEnumModule::HeuristicPolEnumModule(const StrategySupportProfile &S, 
 }
 
 
-int HeuristicPolEnumModule::PolEnum(void)
+int HeuristicPolEnumModule::PolEnum()
 {
   gPolyList<double> equations = NashOnSupportEquationsAndInequalities();
 
@@ -96,17 +96,17 @@ bool HeuristicPolEnumModule::EqZero(double x) const
   return 0;
 }     
 
-long HeuristicPolEnumModule::NumEvals(void) const
+long HeuristicPolEnumModule::NumEvals() const
 {
   return nevals;
 }
 
-double HeuristicPolEnumModule::Time(void) const
+double HeuristicPolEnumModule::Time() const
 {
   return time;
 }
 
-const Gambit::List<MixedStrategyProfile<double> > &HeuristicPolEnumModule::GetSolutions(void) const
+const Gambit::List<MixedStrategyProfile<double> > &HeuristicPolEnumModule::GetSolutions() const
 {
   return solutions;
 }

@@ -47,7 +47,7 @@ bool GameTreeActionRep::Precedes(const GameNode &n) const
   return false;
 }
 
-void GameTreeActionRep::DeleteAction(void)
+void GameTreeActionRep::DeleteAction()
 {
   if (m_infoset->NumActions() == 1) throw UndefinedException();
 
@@ -66,7 +66,7 @@ void GameTreeActionRep::DeleteAction(void)
   m_infoset->m_efg->Canonicalize();
 }
 
-GameInfoset GameTreeActionRep::GetInfoset(void) const { return m_infoset; }
+GameInfoset GameTreeActionRep::GetInfoset() const { return m_infoset; }
 
 //========================================================================
 //                       class GameTreeInfosetRep
@@ -99,7 +99,7 @@ GameTreeInfosetRep::~GameTreeInfosetRep()
   for (int act = 1; act <= m_actions.Length(); m_actions[act++]->Invalidate());
 }
 
-Game GameTreeInfosetRep::GetGame(void) const { return m_efg; }
+Game GameTreeInfosetRep::GetGame() const { return m_efg; }
 
 void GameTreeInfosetRep::SetPlayer(GamePlayer p_player)
 {
@@ -221,9 +221,9 @@ void GameTreeInfosetRep::Reveal(GamePlayer p_player)
 GameNode GameTreeInfosetRep::GetMember(int p_index) const 
 { return m_members[p_index]; }
 
-GamePlayer GameTreeInfosetRep::GetPlayer(void) const { return m_player; }
+GamePlayer GameTreeInfosetRep::GetPlayer() const { return m_player; }
 
-bool GameTreeInfosetRep::IsChanceInfoset(void) const
+bool GameTreeInfosetRep::IsChanceInfoset() const
 { return m_player->IsChance(); }
 
 
@@ -240,9 +240,9 @@ GameTreeNodeRep::~GameTreeNodeRep()
   for (int i = children.Length(); i; children[i--]->Invalidate());
 }
 
-Game GameTreeNodeRep::GetGame(void) const { return m_efg; }
+Game GameTreeNodeRep::GetGame() const { return m_efg; }
 
-GameNode GameTreeNodeRep::GetNextSibling(void) const  
+GameNode GameTreeNodeRep::GetNextSibling() const  
 {
   if (!m_parent)   return 0;
   if (m_parent->children.Find(const_cast<GameTreeNodeRep *>(this)) == 
@@ -252,7 +252,7 @@ GameNode GameTreeNodeRep::GetNextSibling(void) const
     return m_parent->children[m_parent->children.Find(const_cast<GameTreeNodeRep *>(this)) + 1];
 }
 
-GameNode GameTreeNodeRep::GetPriorSibling(void) const
+GameNode GameTreeNodeRep::GetPriorSibling() const
 { 
   if (!m_parent)   return 0;
   if (m_parent->children.Find(const_cast<GameTreeNodeRep *>(this)) == 1)
@@ -262,7 +262,7 @@ GameNode GameTreeNodeRep::GetPriorSibling(void) const
 
 }
 
-GameAction GameTreeNodeRep::GetPriorAction(void) const
+GameAction GameTreeNodeRep::GetPriorAction() const
 {
   if (!m_parent) {
     return 0;
@@ -300,7 +300,7 @@ bool GameTreeNodeRep::IsSuccessorOf(GameNode p_node) const
   return (n == p_node);
 }
 
-bool GameTreeNodeRep::IsSubgameRoot(void) const
+bool GameTreeNodeRep::IsSubgameRoot() const
 {
   // First take care of a couple easy cases
   if (children.Length() == 0 || infoset->NumMembers() > 1) return false;
@@ -328,7 +328,7 @@ bool GameTreeNodeRep::IsSubgameRoot(void) const
   return true;
 }
 
-void GameTreeNodeRep::DeleteParent(void)
+void GameTreeNodeRep::DeleteParent()
 {
   if (!m_parent) return;
   GameTreeNodeRep *oldParent = m_parent;
@@ -348,7 +348,7 @@ void GameTreeNodeRep::DeleteParent(void)
   m_efg->Canonicalize();
 }
 
-void GameTreeNodeRep::DeleteTree(void)
+void GameTreeNodeRep::DeleteTree()
 {
   while (children.Length() > 0) {
     children[1]->DeleteTree();
@@ -433,7 +433,7 @@ void GameTreeNodeRep::MoveTree(GameNode p_src)
   m_efg->Canonicalize();
 }
 
-Game GameTreeNodeRep::CopySubgame(void) const
+Game GameTreeNodeRep::CopySubgame() const
 {
   std::ostringstream os;
   m_efg->WriteEfgFile(os, const_cast<GameTreeNodeRep *>(this));
@@ -456,7 +456,7 @@ void GameTreeNodeRep::SetInfoset(GameInfoset p_infoset)
   m_efg->Canonicalize();
 }
 
-GameInfoset GameTreeNodeRep::LeaveInfoset(void)
+GameInfoset GameTreeNodeRep::LeaveInfoset()
 {
   if (!infoset) return 0;
 
@@ -549,7 +549,7 @@ GameInfoset GameTreeNodeRep::InsertMove(GameInfoset p_infoset)
 //                        GameTreeRep: Lifecycle
 //------------------------------------------------------------------------
 
-GameTreeRep::GameTreeRep(void)
+GameTreeRep::GameTreeRep()
   : m_computedValues(false), m_doCanon(true)
 {
   m_chance = new GamePlayerRep(this, 0);
@@ -562,7 +562,7 @@ GameTreeRep::~GameTreeRep()
   m_chance->Invalidate();
 }
 
-Game GameTreeRep::Copy(void) const
+Game GameTreeRep::Copy() const
 {
   std::ostringstream os;
   WriteEfgFile(os);
@@ -570,7 +570,7 @@ Game GameTreeRep::Copy(void) const
   return ReadGame(is);
 }
 
-Game NewTree(void)  { return new GameTreeRep(); }
+Game NewTree()  { return new GameTreeRep(); }
 
 //------------------------------------------------------------------------
 //                 GameTreeRep: General data access
@@ -581,7 +581,7 @@ namespace {
 class NotZeroSumException : public Exception {
 public:
   virtual ~NotZeroSumException() throw() { }
-  const char *what(void) const throw() { return "Game is not constant sum"; }
+  const char *what() const throw() { return "Game is not constant sum"; }
 };
 
 Rational SubtreeSum(const GameNode &p_node)
@@ -608,7 +608,7 @@ Rational SubtreeSum(const GameNode &p_node)
 }  // end anonymous namespace
 
 
-bool GameTreeRep::IsConstSum(void) const
+bool GameTreeRep::IsConstSum() const
 {
   try {
     SubtreeSum(m_root);
@@ -683,7 +683,7 @@ void GameTreeRep::NumberNodes(GameTreeNodeRep *n, int &index)
        NumberNodes(n->children[child++], index));
 } 
 
-void GameTreeRep::Canonicalize(void)
+void GameTreeRep::Canonicalize()
 {
   if (!m_doCanon)  return;
   int nodeindex = 1;
@@ -733,7 +733,7 @@ void GameTreeRep::Canonicalize(void)
   }
 }
 
-void GameTreeRep::ClearComputedValues(void) const
+void GameTreeRep::ClearComputedValues() const
 {
   for (int pl = 1; pl <= m_players.Length(); pl++) {
     while (m_players[pl]->m_strategies.Length() > 0) {
@@ -744,7 +744,7 @@ void GameTreeRep::ClearComputedValues(void) const
   m_computedValues = false;
 }
 
-void GameTreeRep::BuildComputedValues(void)
+void GameTreeRep::BuildComputedValues()
 {
   if (m_computedValues) return;
 
@@ -890,7 +890,7 @@ void GameTreeRep::WriteNfgFile(std::ostream &p_file) const
 //                 GameTreeRep: Dimensions of the game
 //------------------------------------------------------------------------
 
-PVector<int> GameTreeRep::NumActions(void) const
+PVector<int> GameTreeRep::NumActions() const
 {
   Array<int> foo(m_players.Length());
   int i;
@@ -907,7 +907,7 @@ PVector<int> GameTreeRep::NumActions(void) const
   return bar;
 }  
 
-PVector<int> GameTreeRep::NumMembers(void) const
+PVector<int> GameTreeRep::NumMembers() const
 {
   Array<int> foo(m_players.Length());
 
@@ -925,7 +925,7 @@ PVector<int> GameTreeRep::NumMembers(void) const
   return bar;
 }
 
-int GameTreeRep::BehavProfileLength(void) const
+int GameTreeRep::BehavProfileLength() const
 {
   int sum = 0;
   for (int i = 1; i <= m_players.Length(); i++)
@@ -938,7 +938,7 @@ int GameTreeRep::BehavProfileLength(void) const
 //                        GameTreeRep: Players
 //------------------------------------------------------------------------
 
-GamePlayer GameTreeRep::NewPlayer(void)
+GamePlayer GameTreeRep::NewPlayer()
 {
   GamePlayerRep *player = 0;
   player = new GamePlayerRep(this, m_players.Length() + 1);
@@ -968,7 +968,7 @@ GameInfoset GameTreeRep::GetInfoset(int p_index) const
   throw IndexException();
 }
 
-Array<int> GameTreeRep::NumInfosets(void) const
+Array<int> GameTreeRep::NumInfosets() const
 {
   Array<int> foo(m_players.Length());
   for (int i = 1; i <= foo.Length(); i++) {
@@ -1024,7 +1024,7 @@ int CountNodes(GameNode p_node)
 
 }  // end anonymous namespace
 
-int GameTreeRep::NumNodes(void) const
+int GameTreeRep::NumNodes() const
 {
   return CountNodes(m_root);
 }
@@ -1072,13 +1072,13 @@ MixedStrategyProfile<Rational> GameTreeRep::NewMixedStrategyProfile(const Ration
 
 class TreePureStrategyProfileRep : public PureStrategyProfileRep {
 protected:
-  virtual PureStrategyProfileRep *Copy(void) const;
+  virtual PureStrategyProfileRep *Copy() const;
 
 public:
   TreePureStrategyProfileRep(const Game &p_game)
     : PureStrategyProfileRep(p_game) { }
   virtual void SetStrategy(const GameStrategy &);
-  virtual GameOutcome GetOutcome(void) const
+  virtual GameOutcome GetOutcome() const
   { throw UndefinedException(); }
   virtual void SetOutcome(GameOutcome p_outcome)
   { throw UndefinedException(); }
@@ -1090,12 +1090,12 @@ public:
 //              TreePureStrategyProfileRep: Lifecycle
 //------------------------------------------------------------------------
 
-PureStrategyProfileRep *TreePureStrategyProfileRep::Copy(void) const
+PureStrategyProfileRep *TreePureStrategyProfileRep::Copy() const
 {
   return new TreePureStrategyProfileRep(*this);
 }
 
-PureStrategyProfile GameTreeRep::NewPureStrategyProfile(void) const
+PureStrategyProfile GameTreeRep::NewPureStrategyProfile() const
 {
   return PureStrategyProfile(new TreePureStrategyProfileRep(const_cast<GameTreeRep *>(this)));
 }

@@ -38,7 +38,7 @@ namespace Gambit {
 
 static const Integer _Int_One(1);
 
-void Rational::normalize(void)
+void Rational::normalize()
 {
   int s = sign(den);
   if (s == 0)  {
@@ -123,7 +123,7 @@ void      div(const Rational& x, const Rational& y, Rational& r)
 
 
 
-void Rational::invert(void)
+void Rational::invert()
 {
   Integer tmp = num;  
   num = den;  
@@ -197,7 +197,7 @@ Rational pow(const Rational& x, const Integer& y)
   return pow(x, yy);
 }               
 
-Rational Rational::operator-(void) const
+Rational Rational::operator-() const
 {
   Rational r(*this); r.negate(); return r;
 }
@@ -362,7 +362,7 @@ std::istream &operator>>(std::istream &f, Rational &y)
   return f;
 }
 
-bool Rational::OK(void) const
+bool Rational::OK() const
 {
   int v = num.OK() && den.OK(); // have valid num and denom
   if (v)   {
@@ -504,7 +504,7 @@ Rational &Rational::operator/=(const Rational& y)
 const Integer& Rational::numerator() const { return num; }
 const Integer& Rational::denominator() const { return den; }
 
-Rational::operator double(void) const 
+Rational::operator double() const 
 {
   // We approach this in terms of absolute values because there is
   // (apparently) a bug in ratio() which yields incorrect results

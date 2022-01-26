@@ -89,13 +89,13 @@ public:
   
 
   void SetMaxDecel(double p_maxDecel) { m_maxDecel = p_maxDecel; }
-  double GetMaxDecel(void) const { return m_maxDecel; }
+  double GetMaxDecel() const { return m_maxDecel; }
 
   void SetStepsize(double p_hStart) { m_hStart = p_hStart; }
-  double GetStepsize(void) const { return m_hStart; }
+  double GetStepsize() const { return m_hStart; }
 
 protected:
-  PathTracer(void) : m_maxDecel(1.1), m_hStart(0.03)
+  PathTracer() : m_maxDecel(1.1), m_hStart(0.03)
     { } 
   virtual ~PathTracer() { }
 

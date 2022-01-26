@@ -215,8 +215,8 @@ public:
   CliqueEnumerator(Array<Edge> &, int, int);
   ~CliqueEnumerator() { }
 
-  const List<Array<int> > &GetCliques1(void) const { return m_cliques1; }
-  const List<Array<int> > &GetCliques2(void) const { return m_cliques2; }
+  const List<Array<int> > &GetCliques1() const { return m_cliques1; }
+  const List<Array<int> > &GetCliques2() const { return m_cliques2; }
 
 private:
   Array<int> firstedge;

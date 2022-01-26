@@ -366,7 +366,7 @@ node node_new()
    **     removes one ptr off the Locals_Stack stack.
  */
 
-void print_locals_stack(void)
+void print_locals_stack()
 {
     local_v ptr;
     ptr = Locals_Stack;

@@ -180,7 +180,7 @@ wxSheetCellAttr gbtMixedProfileList::GetAttr(const wxSheetCoords &p_coords,
 }
 
 
-void gbtMixedProfileList::OnUpdate(void)
+void gbtMixedProfileList::OnUpdate()
 {
   if (m_doc->NumProfileLists() == 0) {
     DeleteRows(0, GetNumberRows());

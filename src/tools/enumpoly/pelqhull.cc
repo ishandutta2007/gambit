@@ -215,7 +215,7 @@ void qh_meminitbuffers (int tracelevel, int alignment, int numsizes, int bufsize
 /*-------------------------------------------------
 -memsetup- set up memory after running memsize()
 */
-void qh_memsetup (void) {
+void qh_memsetup () {
   int k,i;
 
   qsort(qhmem.sizetable, qhmem.TABLEsize, sizeof(int), qh_intcompare);
@@ -1029,7 +1029,7 @@ void qh_settempfree(setT **set) {
 /*----------------------------------------
 -settempfree_all- free all temporary sets in qhmem.tempstack
 */
-void qh_settempfree_all(void) {
+void qh_settempfree_all() {
   setT *set, **setp;
 
   FOREACHset_((setT *)qhmem.tempstack) 
@@ -1040,7 +1040,7 @@ void qh_settempfree_all(void) {
 /*----------------------------------------
 -settemppop- pop and return temporary set from qhmem.tempstack (makes it permanent)
 */
-setT *qh_settemppop(void) {
+setT *qh_settemppop() {
   setT *stackedset;
   
   stackedset= (setT *)qh_setdellast((setT *)qhmem.tempstack);
@@ -2170,7 +2170,7 @@ returns:
   sets POINTSmalloc
   lowbound/highbound is also projected
 */
-void qh_projectinput (void) {
+void qh_projectinput () {
   int k,i;
   int newdim= qh input_dim, newnum= qh num_points;
   signed char *project;
@@ -2301,7 +2301,7 @@ void qh_projectpoints (signed char *project, int n, realT *points,
 -randomfactor- return a random factor within qh RANDOMmax of 1.0
   RANDOMa/b definedin global.c
 */
-realT qh_randomfactor (void) {
+realT qh_randomfactor () {
   realT randr;
 
   randr= qh_RANDOMint;
@@ -2386,7 +2386,7 @@ returns:
   scales points to low[k], high[k]
   sets qh POINTSmalloc
 */
-void qh_scaleinput (void) {
+void qh_scaleinput () {
   int size;
   pointT *newpoints;
 
@@ -2788,7 +2788,7 @@ qhstatT qh_qhstat;   /* remove "={0}" if this causes a compiler error */
   (otherwise, 'gcc -O2' uses too much memory)
   uses qhstat next
 */
-void qh_allstatA (void) {
+void qh_allstatA () {
   
    /* zdef_(type,name,doc,average) */
   zzdef_(zdoc, Zdoc2, "precision statistics", -1);
@@ -2813,7 +2813,7 @@ void qh_allstatA (void) {
   zzdef_(zinc, Zmultiflip, "ridges with multiple neighbors (diff flip)", -1);
 
 }
-void qh_allstatB (void) {
+void qh_allstatB () {
   zzdef_(zdoc, Zdoc1, "summary information", -1);
   zdef_(zinc, Zvertices, "number of vertices in output", -1);
   zdef_(zinc, Znumfacets, "number of facets in output", -1);
@@ -2856,7 +2856,7 @@ void qh_allstatB (void) {
   zdef_(zinc, Ztotverify, "points verified", -1);
   zdef_(zinc, Zverifypart, "  ave. distance tests per verify", Ztotverify);
 }
-void qh_allstatC(void) {
+void qh_allstatC() {
   zdef_(zdoc, Zdoc4, "partitioning statistics", -1);
   zdef_(zinc, Zpartinside, "inside points", -1);
   zdef_(zinc, Zcoplanarinside, "  inside points that were coplanar with a facet", -1);
@@ -2876,7 +2876,7 @@ void qh_allstatC(void) {
   zdef_(zinc, Zcomputefurthest, "distance tests for computing furthest", -1);
   
 }
-void qh_allstatD(void) {
+void qh_allstatD() {
   zdef_(zdoc, Zdoc5, "statistics for matching ridges", -1);
   zdef_(zinc, Zhashlookup, "total lookups for matching ridges of new facets", -1);
   zdef_(zinc, Zhashtests, "average number of tests to match a ridge", Zhashlookup);
@@ -2892,7 +2892,7 @@ void qh_allstatD(void) {
   zdef_(zinc, Zcoplanarcentrum, "coplanar centrums in getmergeset", -1);
   zdef_(zinc, Zconcaveridge, "concave ridges in getmergeset", -1);
 }
-void qh_allstatE(void) {
+void qh_allstatE() {
   zdef_(zdoc, Zdoc7, "statistics for merging", -1);
   zdef_(wmax, Wmaxoutside, "max distance of merged vertex above facet", -1);
   zdef_(wmin, Wminvertex, "max distance of merged vertex below facet", -1);
@@ -2928,7 +2928,7 @@ void qh_allstatE(void) {
   zdef_(wmax, Wduplicatemax, "  maximum merge distance", -1);
 
 }
-void qh_allstatF(void) {
+void qh_allstatF() {
   zdef_(zdoc, Zdoc8, "renamed vertex statistics", -1);
   zdef_(zinc, Zrenameshare, "renamed vertices shared by two facets", -1);
   zdef_(zinc, Zrenamepinch, "renamed vertices in a pinched facet", -1);
@@ -2962,7 +2962,7 @@ void qh_allstatF(void) {
 /*-------------------------------------------------
 -collectstatistics- collect statistics for qh facet_list
 */
-void qh_collectstatistics (void) {
+void qh_collectstatistics () {
   facetT *facet, *neighbor, **neighborp;
   vertexT *vertex, **vertexp;
   realT dotproduct, dist;
@@ -3056,7 +3056,7 @@ void qh_collectstatistics (void) {
 /*-------------------------------------------------
 -freestatistics- free memory used for statistics
 */
-void qh_freestatistics (void) {
+void qh_freestatistics () {
 
 #if qh_QHpointer   /* duplicated if !KEEPstatistics */
   free (qh_qhstat);
@@ -3068,7 +3068,7 @@ void qh_freestatistics (void) {
 -initstatistics- allocate and initialize statistics
   uses malloc instead of memalloc since mem.c not setup yet
 */
-void qh_initstatistics (void) {
+void qh_initstatistics () {
   int i;
   realT realx;
   int intx;
@@ -3347,7 +3347,7 @@ returns:
   if qh VERTEXneighbors, update neighbors for each vertex
   interior vertices added to qh del_vertices for later partitioning
 */
-void qh_attachnewfacets (void ) {
+void qh_attachnewfacets ( ) {
   facetT *newfacet= NULL, *neighbor, **neighborp, *horizon, *visible;
   ridgeT *ridge, **ridgep;
   vertexT *vertex, **vertexp;
@@ -3468,7 +3468,7 @@ void qh_attachnewfacets (void ) {
   if ONLYgood, ignores !good facets
   see: check_maxout
 */
-void qh_check_bestdist (void) {
+void qh_check_bestdist () {
   boolT waserror= False, isoutside;
   facetT *facet, *bestfacet, *errfacet1= NULL, *errfacet2= NULL;
   realT dist, maxoutside;
@@ -3527,7 +3527,7 @@ notes:
   may not need to check inside points if KEEPcoplanar 
      (since coplanar is now min_vertex instead of -DISTround)
 */
-void qh_check_maxout (void) {
+void qh_check_maxout () {
   boolT isoutside;
   facetT *facet, *bestfacet, *neighbor, **neighborp;
   realT dist, maxoutside, minvertex;
@@ -3594,7 +3594,7 @@ void qh_check_maxout (void) {
 -check_output- performs the checks at the end of qhull algorithm
   does not check points (may take a long time)
 */
-void qh_check_output (void) {
+void qh_check_output () {
   int i;
 
   if (qh STOPcone)
@@ -3634,7 +3634,7 @@ void qh_check_point (pointT *point, facetT *facet, realT *maxoutside, facetT **e
      uses findbest if lots of points
      ignores flipped facets
 */
-void qh_check_points (void) {
+void qh_check_points () {
   facetT *facet, *errfacet1= NULL, *errfacet2= NULL;
   realT total, maxoutside;
   pointT *point, **pointp, *pointtemp;
@@ -4211,7 +4211,7 @@ void qh_clearcenters (int type) {
 /*-------------------------------------------------
 -clearnewvertices- clear vertices from newvertex_list
 */
-void qh_clearnewvertices (void /*qh newvertex_list*/) {
+void qh_clearnewvertices ( /*qh newvertex_list*/) {
   vertexT *vertex;
   
   FORALLvertex_(qh newvertex_list)
@@ -4223,7 +4223,7 @@ void qh_clearnewvertices (void /*qh newvertex_list*/) {
 -clearvisible- clear facets from visible list
   resets NEWfacets
 */
-void qh_clearvisible (void /*qh visible_list*/) {
+void qh_clearvisible ( /*qh visible_list*/) {
   facetT *visible;
   
   FORALLvisible_facets
@@ -4967,7 +4967,7 @@ returns:
 notes:
   do not allocate memory after hash_table (need to free it cleanly)
 */
-void qh_matchnewfacets (void) {
+void qh_matchnewfacets () {
   int numnew=0, numfree= 0, hashcount=0, newskip, nth=0;
   facetT *newfacet, *neighbor, **neighborp, *facet;
   int facet_i, facet_n, dim= qh hull_dim, hashsize;
@@ -5130,7 +5130,7 @@ returns:
     all fields initialized or cleared (NULL)
     preallocates neighbors
 */
-facetT *qh_newfacet(void) {
+facetT *qh_newfacet() {
   facetT *facet = NULL;
   void **freelistp;
   
@@ -5184,7 +5184,7 @@ int qh_newhashtable(int newsize) {
 /*----------------------------------------
 -newridge- creates and allocates space for a ridge
 */
-ridgeT *qh_newridge(void) {
+ridgeT *qh_newridge() {
   ridgeT *ridge = NULL;
   void **freelistp;
 
@@ -5260,7 +5260,7 @@ void qh_point_add (setT *set, pointT *point, void *elem) {
   NULL if no facet for point (inside)
      this will include qh GOODpointp
 */
-setT *qh_pointfacet (void /*qh facet_list*/) {
+setT *qh_pointfacet ( /*qh facet_list*/) {
   int numpoints= qh num_points + qh_setsize (qh other_points);
   setT *facets;
   facetT *facet;
@@ -5309,7 +5309,7 @@ int qh_pointid (pointT *point) {
   NULL if no vertex for point
      this will include qh GOODpointp
 */
-setT *qh_pointvertex (void /*qh facet_list*/) {
+setT *qh_pointvertex ( /*qh facet_list*/) {
   int numpoints= qh num_points + qh_setsize (qh other_points);
   setT *vertices;
   vertexT *vertex;
@@ -5390,7 +5390,7 @@ void qh_printhashtable(FILE *fp) {
 /*-------------------------------------------------
 -printlists- print out facet and vertex list for debugging (without 'f/v' tags)
 */
-void qh_printlists (void) {
+void qh_printlists () {
   facetT *facet;
   vertexT *vertex;
   
@@ -5502,7 +5502,7 @@ setT *qh_vertexintersect_new (setT *vertexsetA,setT *vertexsetB) {
 returns:
   sets qh VERTEXneighbors, qh_addpoint() will maintain them
 */
-void qh_vertexneighbors (void /*qh facet_list*/) {
+void qh_vertexneighbors ( /*qh facet_list*/) {
   facetT *facet;
   vertexT *vertex, **vertexp;
 
@@ -6430,7 +6430,7 @@ returns:
 notes:
   numdegenredun also counts degen facets that become ok
 */
-void qh_merge_nonconvex (void /*qh newfacet_list*/) {
+void qh_merge_nonconvex ( /*qh newfacet_list*/) {
   facetT *bestfacet, *neighbor, *facet1, *facet2;
   facetT *bestneighbor;
   mergeT *merge;
@@ -6946,7 +6946,7 @@ returns:
   vertices are renamed if possible
   centrum's reset for small (qh_MAXnewcentrum), newly merged or renamed facets
 */
-boolT qh_reducevertices_centrums (void) {
+boolT qh_reducevertices_centrums () {
   int numshare=0, numrename= 0, numcentrums= 0;
   int numdegenredun= 0;
   facetT *newfacet;
@@ -7419,7 +7419,7 @@ void qh_appendprint (int format) {
   must match initbuffers()
 */
 
-void qh_freebuffers (void) {
+void qh_freebuffers () {
 
   trace5((qh ferr, "qh_freebuffers: freeing up global memory buffers\n"));
   qh_memfree (qh NEARzero, qh hull_dim * sizeof(realT));
@@ -7888,7 +7888,7 @@ void qh_initflags(char *command) {
 -initqhull_buffers- initialize global memory buffers
   must match freebuffers()
 */
-void qh_initqhull_buffers (void) {
+void qh_initqhull_buffers () {
   int k;
 
   qh TEMPsize= (qhmem.LASTsize - sizeof (setT))/SETelemsize;
@@ -8068,7 +8068,7 @@ returns:
 notes:
   the user can add up to 10 additional sizes for quick allocation (increase numsizes)
 */
-void qh_initqhull_mem (void) {
+void qh_initqhull_mem () {
   int numsizes;
   int i;
 
@@ -8329,7 +8329,7 @@ int qh_strtol (const char *s, char **endp) {
 returns:
   returns facet_list, numfacets, etc. 
 */
-void qh_qhull (void) {
+void qh_qhull () {
   setT *maxpoints, *vertices;
   facetT *facet;
   int numpart, numoutside, i;
@@ -8511,7 +8511,7 @@ boolT qh_addpoint (pointT *furthest, facetT *facet, boolT checkdist) {
 notes:
   to recover from STOPcone, call qh_deletevisible and qh_clearnewvertices
 */
-void qh_buildhull(void) {
+void qh_buildhull() {
   facetT *facet;
   pointT *furthest;
   vertexT *vertex;

@@ -34,7 +34,7 @@ private:
   wxWindow *m_dominanceToolbar, *m_playerToolbar;
 
   // Overriding gbtGameView members
-  void OnUpdate(void) { }
+  void OnUpdate() { }
 
   /// @name Command event handlers
   //@{
@@ -52,7 +52,7 @@ public:
   /// @name Exporting/printing graphics
   //@{
   /// Creates a printout object of the game as currently displayed
-  wxPrintout *GetPrintout(void);
+  wxPrintout *GetPrintout();
   /// Creates a bitmap of the game as currently displayed
   bool GetBitmap(wxBitmap &, int marginX, int marginY);
   /// Outputs the game as currently displayed to a SVG file

@@ -181,7 +181,7 @@ public:
   
   virtual void operator()(const Vector<double> &p_point,
 			  bool p_isTerminal) const;
-  const List<LogitQREMixedStrategyProfile> &GetProfiles(void) const
+  const List<LogitQREMixedStrategyProfile> &GetProfiles() const
   { return m_profiles; }
   
 private:
@@ -307,9 +307,9 @@ public:
   virtual void operator()(const Vector<double> &p_point,
 			  bool p_isTerminal) const;
 
-  LogitQREMixedStrategyProfile GetMaximizer(void) const
+  LogitQREMixedStrategyProfile GetMaximizer() const
   { return LogitQREMixedStrategyProfile(m_bestProfile, m_bestLambda); }
-  void PrintMaximizer(void) const;
+  void PrintMaximizer() const;
 		    
 private:
   void PrintProfile(const MixedStrategyProfile<double> &, double) const;
@@ -349,7 +349,7 @@ StrategicQREEstimator::CallbackFunction::PrintProfile(const MixedStrategyProfile
 }
 
 void
-StrategicQREEstimator::CallbackFunction::PrintMaximizer(void) const
+StrategicQREEstimator::CallbackFunction::PrintMaximizer() const
 {
   m_stream.setf(std::ios::fixed);
   // By convention, we output lambda first

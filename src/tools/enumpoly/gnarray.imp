@@ -22,7 +22,7 @@
 
 #include "gnarray.h"
 
-template <class T> gNArray<T>::gNArray(void)
+template <class T> gNArray<T>::gNArray()
   : storage_size(0), storage(0)
 { }
 
@@ -144,7 +144,7 @@ template <class T> T &gNArray<T>::operator[](long l)
   return storage[l];
 }
 
-template <class T> const Gambit::Array<int> &gNArray<T>::Dimensionality(void) const
+template <class T> const Gambit::Array<int> &gNArray<T>::Dimensionality() const
 {
   return dim;
 }

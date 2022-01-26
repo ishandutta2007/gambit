@@ -255,7 +255,7 @@ gbtLogitBehavDialog::gbtLogitBehavDialog(wxWindow *p_parent,
   Start();
 }
 
-void gbtLogitBehavDialog::Start(void)
+void gbtLogitBehavDialog::Start()
 {
   m_process = new wxProcess(this, GBT_ID_PROCESS);
   m_process->Redirect();

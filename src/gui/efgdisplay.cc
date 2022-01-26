@@ -63,7 +63,7 @@ void gbtPayoffEditor::BeginEdit(gbtNodeEntry *p_entry, int p_player)
   SetFocus();
 }
 
-void gbtPayoffEditor::EndEdit(void)
+void gbtPayoffEditor::EndEdit()
 {
   Show(false);
 }
@@ -84,7 +84,7 @@ void gbtPayoffEditor::OnChar(wxKeyEvent &p_event)
 //                       Bitmap drawing functions
 //--------------------------------------------------------------------------
 
-static wxBitmap MakeOutcomeBitmap(void)
+static wxBitmap MakeOutcomeBitmap()
 {
   wxBitmap bitmap(24, 24);
   wxMemoryDC dc;
@@ -321,7 +321,7 @@ gbtEfgDisplay::gbtEfgDisplay(wxWindow *p_parent, gbtGameDocument *p_doc)
   OnUpdate();
 }
 
-void gbtEfgDisplay::MakeMenus(void)
+void gbtEfgDisplay::MakeMenus()
 {
   m_nodeMenu = new wxMenu;
 
@@ -567,13 +567,13 @@ void gbtEfgDisplay::OnAcceptPayoffEdit(wxCommandEvent &)
 //           gbtEfgDisplay: Implementing gbtGameView members
 //---------------------------------------------------------------------
 
-void gbtEfgDisplay::PostPendingChanges(void)
+void gbtEfgDisplay::PostPendingChanges()
 {
   // FIXME: Save edit!
   m_payoffEditor->EndEdit();
 }
 
-void gbtEfgDisplay::OnUpdate(void)
+void gbtEfgDisplay::OnUpdate()
 {
   // First make sure that the selected node is in fact still valid
   if (m_doc->GetSelectNode()) {
@@ -610,14 +610,14 @@ void gbtEfgDisplay::OnUpdate(void)
 //                   gbtEfgDisplay: Drawing functions
 //---------------------------------------------------------------------
 
-void gbtEfgDisplay::RefreshTree(void)
+void gbtEfgDisplay::RefreshTree()
 {
   m_layout.BuildNodeList(m_doc->GetEfgSupport());
   m_layout.Layout(m_doc->GetEfgSupport());
   Refresh();
 }
 
-void gbtEfgDisplay::AdjustScrollbarSteps(void)
+void gbtEfgDisplay::AdjustScrollbarSteps()
 {
   int width, height;
   GetClientSize(&width, &height);
@@ -631,7 +631,7 @@ void gbtEfgDisplay::AdjustScrollbarSteps(void)
 		scrollX, scrollY);
 }
 
-void gbtEfgDisplay::FitZoom(void)
+void gbtEfgDisplay::FitZoom()
 {
   int width, height;
   GetClientSize(&width, &height);

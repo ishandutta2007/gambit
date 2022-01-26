@@ -44,7 +44,7 @@ gbtNodeEntry::gbtNodeEntry(Gambit::GameNode p_node)
     m_sublevel(0), m_actionProb(0)
 { }
 
-int gbtNodeEntry::GetChildNumber(void) const
+int gbtNodeEntry::GetChildNumber() const
 {
   if (m_node->GetParent()) {
     return m_node->GetPriorAction()->GetNumber();
@@ -754,7 +754,7 @@ void gbtTreeLayout::FillInfosetTable(Gambit::GameNode n, const Gambit::BehaviorS
   }
 }
 
-void gbtTreeLayout::UpdateTableInfosets(void)
+void gbtTreeLayout::UpdateTableInfosets()
 {
   // Note that levels are numbered from 0, not 1.
   // create an array to hold max num for each level
@@ -785,7 +785,7 @@ void gbtTreeLayout::UpdateTableInfosets(void)
   }
 }
 
-void gbtTreeLayout::UpdateTableParents(void)
+void gbtTreeLayout::UpdateTableParents()
 {
   for (int pos = 1; pos <= m_nodeList.Length(); pos++) {
     gbtNodeEntry *e = m_nodeList[pos];
@@ -863,7 +863,7 @@ void gbtTreeLayout::BuildNodeList(const Gambit::BehaviorSupportProfile &p_suppor
 }
 
 
-void gbtTreeLayout::GenerateLabels(void)
+void gbtTreeLayout::GenerateLabels()
 {
   const gbtStyle &settings = m_doc->GetStyle();
   for (int i = 1; i <= m_nodeList.Length(); i++) {

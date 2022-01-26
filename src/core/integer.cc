@@ -2860,7 +2860,7 @@ Integer abs(const Integer& x)
   return r;
 }
 
-Integer Integer::operator-(void) const
+Integer Integer::operator-() const
 {
   Integer r;
   Gambit::negate(*this, r);

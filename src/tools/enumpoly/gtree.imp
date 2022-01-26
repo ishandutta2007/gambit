@@ -51,7 +51,7 @@ template <class T> gTreeNode<T>::~gTreeNode()
 //                 gTree<T>: Member function implementations
 //--------------------------------------------------------------------------
 
-template <class T> gTree<T>::gTree(void) 
+template <class T> gTree<T>::gTree() 
 : root(NULL)
 { }
 
@@ -193,7 +193,7 @@ template <class T> void gTree<T>::RecursiveFlush(const gTreeNode<T>* n)
   delete n;
 }
 
-template <class T> void gTree<T>::Flush(void)
+template <class T> void gTree<T>::Flush()
 {
   RecursiveFlush(root);
   root = NULL;

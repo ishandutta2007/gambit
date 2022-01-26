@@ -1,7 +1,12 @@
 ---
-Checks:          '-*,modernize-deprecated-headers'
+Checks: |
+  -*,
+  modernize-deprecated-headers,
+  modernize-redundant-void-arg
 WarningsAsErrors: ''
-HeaderFilterRegex: '/src/*'
+# Don't bother with wxWidgets headers
+HeaderFilterRegex: '/src/'
+#HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: false
 FormatStyle:     none
 User:            arbiter

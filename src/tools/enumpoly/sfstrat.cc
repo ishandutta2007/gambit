@@ -27,7 +27,7 @@
 // Sequence:  Member functions
 //--------------------------------------
 
-Gambit::List<Gambit::GameAction> Sequence::History(void) const 
+Gambit::List<Gambit::GameAction> Sequence::History() const 
 { 
   Gambit::List<Gambit::GameAction> h;
   Gambit::GameAction a = action;
@@ -127,13 +127,13 @@ Sequence *SFSequenceSet::Find( int j )
 }
 
 // Number of Sequences in a SFSequenceSet
-int SFSequenceSet::NumSequences(void) const
+int SFSequenceSet::NumSequences() const
 {
   return (sequences.Length());
 }
 
 // Return the entire sequence set
-const Gambit::Array<Sequence *> &SFSequenceSet::GetSFSequenceSet(void) const
+const Gambit::Array<Sequence *> &SFSequenceSet::GetSFSequenceSet() const
 {
   return sequences;
 }
@@ -198,7 +198,7 @@ int SFSupport::NumSequences(int pl) const
   return sups[pl]->NumSequences();
 }
 
-const Gambit::Array<int> SFSupport::NumSequences(void) const
+const Gambit::Array<int> SFSupport::NumSequences() const
 {
   Gambit::Array<int> a(sups.Length());
 
@@ -207,7 +207,7 @@ const Gambit::Array<int> SFSupport::NumSequences(void) const
   return a;
 }
 
-int SFSupport::TotalNumSequences(void) const
+int SFSupport::TotalNumSequences() const
 {
   int total = 0;
   for (int i = 1 ; i <= sups.Length(); i++)

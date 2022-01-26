@@ -79,7 +79,7 @@ gbtRevealMoveDialog::gbtRevealMoveDialog(wxWindow *p_parent,
   CenterOnParent();
 }
 
-Gambit::Array<Gambit::GamePlayer> gbtRevealMoveDialog::GetPlayers(void) const
+Gambit::Array<Gambit::GamePlayer> gbtRevealMoveDialog::GetPlayers() const
 {
   Gambit::Array<Gambit::GamePlayer> players;
 

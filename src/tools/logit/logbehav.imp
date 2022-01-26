@@ -102,7 +102,7 @@ bool LogBehavProfile<T>::operator==(const LogBehavProfile<T> &p_profile) const
 //              LogBehavProfile<T>: General data access
 //========================================================================
 
-template <class T> void LogBehavProfile<T>::Centroid(void)
+template <class T> void LogBehavProfile<T>::Centroid()
 {
   T center;
 
@@ -503,7 +503,7 @@ void LogBehavProfile<T>::ComputeSolutionDataPass1(const GameNode &node) const
 }
 
 template <class T>
-void LogBehavProfile<T>::ComputeSolutionData(void) const
+void LogBehavProfile<T>::ComputeSolutionData() const
 {
   if (!m_cacheValid) {
     m_actionValues = (T) 0;

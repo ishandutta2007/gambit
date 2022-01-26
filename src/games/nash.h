@@ -213,7 +213,7 @@ private:
 class EquilibriumLimitReached : public Exception {
 public:
   virtual ~EquilibriumLimitReached() throw() { }
-  const char *what(void) const throw() { return "Reached target number of equilibria"; }
+  const char *what() const throw() { return "Reached target number of equilibria"; }
 };
 
 }  // namespace Gambit::Nash

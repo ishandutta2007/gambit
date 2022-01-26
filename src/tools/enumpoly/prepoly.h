@@ -68,7 +68,7 @@ public:
   bool            operator!=(const gSpace & rhs) const;
   
   // information
-  int             Dmnsn(void)              const;
+  int             Dmnsn()              const;
   Variable*       VariableWithNumber(int)  const;
   const std::string&  GetVariableName(int)     const;
   gSpace          WithVariableAppended()   const;

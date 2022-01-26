@@ -34,7 +34,7 @@
 //                     class gbtStyle: Implementation
 //===========================================================================
 
-gbtStyle::gbtStyle(void)
+gbtStyle::gbtStyle()
   : m_font(wxFont(10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD))
 {
   SetDefaults();
@@ -65,7 +65,7 @@ const wxColour &gbtStyle::GetPlayerColor(int pl) const
   return m_playerColors[pl];
 }
 
-void gbtStyle::SetDefaults(void)
+void gbtStyle::SetDefaults()
 {
   m_nodeSize = 10;
   m_terminalSpacing = 50;
@@ -94,7 +94,7 @@ void gbtStyle::SetDefaults(void)
   }
 }
 
-std::string gbtStyle::GetColorXML(void) const
+std::string gbtStyle::GetColorXML() const
 {
   std::ostringstream s;
 
@@ -149,7 +149,7 @@ void gbtStyle::SetColorXML(TiXmlNode *p_colors)
   }
 }
 
-std::string gbtStyle::GetFontXML(void) const
+std::string gbtStyle::GetFontXML() const
 {
   std::ostringstream s;
 
@@ -178,7 +178,7 @@ void gbtStyle::SetFontXML(TiXmlNode *p_font)
 			  *wxConvCurrent)));
 }
 
-std::string gbtStyle::GetLayoutXML(void) const
+std::string gbtStyle::GetLayoutXML() const
 {
   std::ostringstream s;
   s << "<autolayout>\n";
@@ -280,7 +280,7 @@ void gbtStyle::SetLayoutXML(TiXmlNode *p_node)
   }
 }
 
-std::string gbtStyle::GetLabelXML(void) const
+std::string gbtStyle::GetLabelXML() const
 {
   std::ostringstream s;
   s << "<labels ";

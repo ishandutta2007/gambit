@@ -791,3 +791,4 @@ msw-msi:
 
 clang-tidy:
 	clang-tidy src/*/*.cc src/*/*/*.cc -- -I src -I src/labenski/include -DVERSION="" ${WX_CXXFLAGS}
+

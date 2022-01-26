@@ -872,7 +872,7 @@ int cell_find_lift(cell c, Ipnt pt){
 /************************************************************************/
 
 Ipnt Internalize_Aset(aset A);
-void free_globals(void);
+void free_globals();
 static cell new_cayley_triangulate(Ipnt *PC);
 static node subdiv_get_norms(cell S, Imatrix T, int *mv);
 
@@ -940,7 +940,7 @@ Ipnt Internalize_Aset(aset A){
 
 
 
-void free_globals(void){
+void free_globals(){
 /* should also reset all global params*/
  HMfree(cly_L);
  HMfree(cly_M);
