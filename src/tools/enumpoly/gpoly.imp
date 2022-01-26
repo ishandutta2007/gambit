@@ -86,8 +86,7 @@ template <class T> gPoly<T>::gPoly(const gPoly<T> &p)
 }
 
 template <class T> gPoly<T>::~gPoly()
-{
-}
+= default;
 
 
 //----------------------------------

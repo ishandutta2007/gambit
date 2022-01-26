@@ -134,7 +134,7 @@ LogitMixedSheet::LogitMixedSheet(wxWindow *p_parent,
 }
 
 LogitMixedSheet::~LogitMixedSheet()
-{ }
+= default;
 
 wxString LogitMixedSheet::GetCellValue(const wxSheetCoords &p_coords)
 {
@@ -556,7 +556,7 @@ private:
 public:
   LogitPrintout(wxPlotCtrl *p_plot, const wxString &p_label)
     : wxPrintout(p_label), m_plot(p_plot) { }
-  virtual ~LogitPrintout() { }
+  virtual ~LogitPrintout() = default;
 
   bool OnPrintPage(int)
   { wxSize size = GetDC()->GetSize();

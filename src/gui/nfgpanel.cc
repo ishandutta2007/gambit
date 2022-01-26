@@ -343,7 +343,7 @@ private:
 
 public:
   gbtStrategyDominanceToolbar(wxWindow *p_parent, gbtGameDocument *p_doc);
-  virtual ~gbtStrategyDominanceToolbar() { }
+  virtual ~gbtStrategyDominanceToolbar() = default;
 };
 
 

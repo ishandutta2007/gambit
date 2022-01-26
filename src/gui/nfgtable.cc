@@ -1136,7 +1136,7 @@ private:
 public:
   gbtNfgPrintout(gbtTableWidget *p_table, const wxString &p_label)
     : wxPrintout(p_label), m_table(p_table) { }
-  virtual ~gbtNfgPrintout() { }
+  virtual ~gbtNfgPrintout() = default;
 
   bool OnPrintPage(int) 
   { m_table->RenderGame(*GetDC(), 50, 50);  return true; }

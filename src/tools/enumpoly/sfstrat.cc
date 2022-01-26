@@ -54,8 +54,8 @@ SFSequenceSet::SFSequenceSet(const Gambit::GamePlayer &p)
 }
 
 SFSequenceSet::SFSequenceSet(const SFSequenceSet &s)
-  : efp(s.efp), sequences(s.sequences)
-{ }
+   
+= default;
 
 SFSequenceSet::~SFSequenceSet()
 { 

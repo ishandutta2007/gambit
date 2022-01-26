@@ -672,8 +672,8 @@ public:
   std::map<int, GameInfoset> m_chanceInfosetMap;
   List<std::map<int, GameInfoset> > m_infosetMap;
 
-  TreeData()  { }
-  ~TreeData() { }
+  TreeData()  = default;
+  ~TreeData() = default;
 };
 
 void ReadPlayers(GameParserState &p_state,
@@ -1007,7 +1007,7 @@ private:
 
 public:
   GameXMLSavefile(const std::string &p_xml);
-  ~GameXMLSavefile()  { }
+  ~GameXMLSavefile()  = default;
 
   Game GetGame() const;
 };

@@ -30,7 +30,7 @@
 //
 class gbtRationalRendererRefData : public wxSheetCellRendererRefData {
 public:
-  gbtRationalRendererRefData() { }
+  gbtRationalRendererRefData() = default;
     
   // draw the string
   virtual void Draw(wxSheet& grid, const wxSheetCellAttr& attr,
@@ -61,7 +61,7 @@ public:
 
 class gbtRationalEditorRefData : public wxSheetCellTextEditorRefData {
 public:
-  gbtRationalEditorRefData() { }
+  gbtRationalEditorRefData() = default;
 
   void CreateEditor(wxWindow *, wxWindowID, wxEvtHandler *, wxSheet *);
 

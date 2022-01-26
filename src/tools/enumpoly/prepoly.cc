@@ -211,9 +211,8 @@ exp_vect::exp_vect(const exp_vect* p)
 }
 
 exp_vect::exp_vect(const exp_vect & p)
-: Space(p.Space), components(p.components)
-{
-}
+ 
+= default;
 
 exp_vect::~exp_vect()
 {
@@ -574,9 +573,8 @@ term_order::term_order(const gSpace* p, ORD_PTR act_ord)
 }
 
 term_order::term_order(const term_order & p)
-: Space(p.Space), actual_order(p.actual_order)
-{
-}
+ 
+= default;
 
 term_order::~term_order()
 {

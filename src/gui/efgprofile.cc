@@ -49,7 +49,7 @@ gbtBehavProfileList::gbtBehavProfileList(wxWindow *p_parent,
 }
 
 gbtBehavProfileList::~gbtBehavProfileList()
-{ }
+= default;
 
 void gbtBehavProfileList::OnLabelClick(wxSheetEvent &p_event)
 {

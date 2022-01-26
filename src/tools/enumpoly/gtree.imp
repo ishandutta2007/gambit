@@ -42,8 +42,7 @@ gTreeNode<T>::gTreeNode(const T& _data,
 { }
 
 template <class T> gTreeNode<T>::~gTreeNode()
-{ 
-}
+= default;
 
 
 

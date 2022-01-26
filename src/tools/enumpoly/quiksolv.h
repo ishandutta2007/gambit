@@ -137,7 +137,7 @@ template <class T> class QuikSolv {
  public:
   class NewtonError : public Gambit::Exception  {
   public:
-    virtual ~NewtonError() noexcept { }
+    virtual ~NewtonError() noexcept = default;
     const char *what() const noexcept
     { return "Newton method failed to polish approximate root"; }
   };

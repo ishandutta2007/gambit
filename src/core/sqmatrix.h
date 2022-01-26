@@ -30,7 +30,7 @@ namespace Gambit {
 
 class SingularMatrixException : public Exception {
 public:
-  virtual ~SingularMatrixException() noexcept { }
+  virtual ~SingularMatrixException() noexcept = default;
   const char *what() const noexcept { return "Attempted to invert a singular matrix"; }
 };
 

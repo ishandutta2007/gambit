@@ -51,7 +51,7 @@ Tableau<double>::Tableau(const Tableau<double> &orig)
 { }
 
 Tableau<double>::~Tableau()
-{ }
+= default;
 
 Tableau<double>& Tableau<double>::operator=(const Tableau<double> &orig)
 {
@@ -260,13 +260,11 @@ Tableau<Rational>::Tableau(const Matrix<Rational> &A,
 
 
 Tableau<Rational>::Tableau(const Tableau<Rational> &orig) 
-  : TableauInterface<Rational>(orig), Tabdat(orig.Tabdat), Coeff(orig.Coeff), 
-    totdenom(orig.totdenom), denom(orig.denom), 
-    tmpcol(orig.tmpcol), nonbasic(orig.nonbasic)
-{ }
+   
+= default;
 
 Tableau<Rational>::~Tableau()
-{ }
+= default;
 
 Tableau<Rational>& Tableau<Rational>::operator=(const Tableau<Rational> &orig)
 {

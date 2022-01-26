@@ -47,7 +47,7 @@ public:
   /// Construct a new output group
   gbtAnalysisOutput(gbtGameDocument *p_doc) : m_doc(p_doc) { }
   /// Clean up an output group
-  virtual ~gbtAnalysisOutput() { }
+  virtual ~gbtAnalysisOutput() = default;
   //@}
 
   /// @name General data access
@@ -138,7 +138,7 @@ public:
   gbtAnalysisProfileList(gbtGameDocument *p_doc, bool p_isBehav)
     : gbtAnalysisOutput(p_doc), m_isBehav(p_isBehav), m_current(0) { }
   /// Cleanup the profile list
-  virtual ~gbtAnalysisProfileList() { }
+  virtual ~gbtAnalysisProfileList() = default;
   //@}
 
   //!

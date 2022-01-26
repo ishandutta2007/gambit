@@ -73,7 +73,7 @@ template<class T> QuikSolv<T>::QuikSolv(const QuikSolv& qs)
 { }
 
 template<class T> QuikSolv<T>::~QuikSolv()
-{ }
+= default;
 
 //-------------------------------------------------------
 //      Supporting Calculations for the Constructors

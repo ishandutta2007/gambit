@@ -45,7 +45,7 @@ private:
 
 public:
   gbtApplication();
-  virtual ~gbtApplication() { }
+  virtual ~gbtApplication() = default;
   
   const wxString &GetCurrentDir()  { return m_currentDir; }
   void SetCurrentDir(const wxString &p_dir);

@@ -90,8 +90,7 @@ private:
 public:
   gbtNfgHs(int = 1);
 
-  virtual ~gbtNfgHs() {
-  }
+  virtual ~gbtNfgHs() = default;
 
   int StopAfter()const {
     return m_stopAfter;

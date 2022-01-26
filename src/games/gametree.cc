@@ -580,7 +580,7 @@ namespace {
 
 class NotZeroSumException : public Exception {
 public:
-  virtual ~NotZeroSumException() noexcept { }
+  virtual ~NotZeroSumException() noexcept = default;
   const char *what() const noexcept { return "Game is not constant sum"; }
 };
 

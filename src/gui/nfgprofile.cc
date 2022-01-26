@@ -50,7 +50,7 @@ gbtMixedProfileList::gbtMixedProfileList(wxWindow *p_parent,
 }
 
 gbtMixedProfileList::~gbtMixedProfileList()
-{ }
+= default;
 
 void gbtMixedProfileList::OnLabelClick(wxSheetEvent &p_event)
 {

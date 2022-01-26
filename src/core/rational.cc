@@ -394,9 +394,9 @@ static IntegerRep _ZeroRep = {1, 0, 1, {0}};
 static IntegerRep _OneRep = {1, 0, 1, {1}};
 
 Rational::Rational() : num(&_ZeroRep), den(&_OneRep) {}
-Rational::~Rational() {}
+Rational::~Rational() = default;
 
-Rational::Rational(const Rational& y) :num(y.num), den(y.den) {}
+Rational::Rational(const Rational& y)  = default;
 
 Rational::Rational(const Integer& n) :num(n), den(&_OneRep) {}
 
@@ -432,9 +432,7 @@ Rational::Rational(int n, int d)
 }
 
 Rational &Rational::operator =  (const Rational& y)
-{
-  num = y.num;  den = y.den;   return *this;
-}
+= default;
 
 bool Rational::operator==(const Rational &y) const
 {

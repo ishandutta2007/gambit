@@ -58,8 +58,7 @@ template<class T> TreeOfPartials<T>::TreeOfPartials(const TreeOfPartials& qs)
 }
 
 template<class T> TreeOfPartials<T>::~TreeOfPartials()
-{
-}
+= default;
 
 template <class T> 
 T TreeOfPartials<T>::ValueOfPartialOfRootPoly(const int& coord, 
@@ -411,8 +410,7 @@ ListOfPartialTrees<T>::ListOfPartialTrees(const ListOfPartialTrees& qs)
 }
 
 template<class T> ListOfPartialTrees<T>::~ListOfPartialTrees()
-{
-}
+= default;
 
 template <class T> bool 
 ListOfPartialTrees<T>::operator ==(const ListOfPartialTrees<T>& rhs) const

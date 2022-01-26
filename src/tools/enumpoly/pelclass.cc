@@ -693,17 +693,12 @@ avoids the error, somehow!!
 }
 
 PelView::PelView(const PelView & given)
-  : input(given.input),
-    complexroots(given.complexroots),
-    realroots(given.realroots),
-    mixedvolume(given.mixedvolume),
-    solutionsarecorrect(given.solutionsarecorrect)
-{
-}
+  
+    
+= default;
 
 PelView::~PelView()
-{
-}
+= default;
 
 PelView& PelView::operator =(const PelView &rhs)
 {

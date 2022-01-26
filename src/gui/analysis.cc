@@ -45,7 +45,7 @@ namespace {
 
 class gbtNotNashException : public Exception {
 public:
-  virtual ~gbtNotNashException() noexcept { }
+  virtual ~gbtNotNashException() noexcept = default;
   const char *what() const noexcept 
   { return "Output line does not contain a Nash equilibrium"; }
 };

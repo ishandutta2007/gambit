@@ -35,7 +35,7 @@ public:
     : StrategySolver<double>(p_onEquilibrium),
       m_maxitsN(p_maxitsN), m_verbose(p_verbose)
   { }
-  virtual ~NashLiapStrategySolver() { }
+  virtual ~NashLiapStrategySolver() = default;
 
   List<MixedStrategyProfile<double> > Solve(const MixedStrategyProfile<double> &p_start) const;
   List<MixedStrategyProfile<double> > Solve(const Game &p_game) const

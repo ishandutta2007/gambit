@@ -29,7 +29,7 @@ namespace Gambit {
 
 class Function {
 public:  
-  virtual ~Function() { }
+  virtual ~Function() = default;
   virtual double Value(const Vector<double> &) const = 0;
   virtual bool Gradient(const Vector<double> &, 
 			Vector<double> &) const = 0;
@@ -39,7 +39,7 @@ public:
 // is a product of simplices.
 class FunctionOnSimplices : public Function {
 public:
-  virtual ~FunctionOnSimplices() { }
+  virtual ~FunctionOnSimplices() = default;
 
 protected:
   // Project the gradient 'x' onto the plane of the product of simplices.
@@ -49,7 +49,7 @@ protected:
 
 class FunctionMinimizerError : public Exception {
 public:
-  virtual ~FunctionMinimizerError() noexcept { }
+  virtual ~FunctionMinimizerError() noexcept = default;
   const char *what() const noexcept 
   { return "Internal error in function minimization"; }
 };
@@ -57,7 +57,7 @@ public:
 // An abstract base class for function minimization
 class FunctionMinimizer {
 public:
-  virtual ~FunctionMinimizer() { }
+  virtual ~FunctionMinimizer() = default;
 
   virtual void Set(const Function &fdf,
 		   const Vector<double> &x, double &f,
@@ -74,7 +74,7 @@ public:
 class ConjugatePRMinimizer : public FunctionMinimizer {
 public:
   ConjugatePRMinimizer(int n);
-  virtual ~ConjugatePRMinimizer() { }
+  virtual ~ConjugatePRMinimizer() = default;
 
   void Set(const Function &fdf,
 	   const Vector<double> &x, double &f,

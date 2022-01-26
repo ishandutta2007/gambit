@@ -39,7 +39,7 @@ template <class T> Vector<T>::Vector(const Vector<T> &V)
   : Array<T>(V) 
 { }
 
-template <class T> Vector<T>::~Vector()   { }
+template <class T> Vector<T>::~Vector()   = default;
 
 template <class T> Vector<T>& Vector<T>::operator=(const Vector<T>& V)
 {

@@ -4,12 +4,12 @@ Checks: |
   modernize-deprecated-headers,
   modernize-redundant-void-arg,
   modernize-use-bool-literals,
+  modernize-use-equals-default,
   modernize-use-noexcept,
   modernize-use-nullptr
 WarningsAsErrors: ''
 # Don't bother with wxWidgets headers
 HeaderFilterRegex: '/src/'
-#HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: false
 FormatStyle:     none
 User:            arbiter

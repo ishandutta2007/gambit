@@ -37,7 +37,7 @@ private:
   
   Sequence(Gambit::GamePlayer pl, Gambit::GameAction a, const Sequence *p, int n) 
     : number(n), player(pl), action(a), parent(p) { }
-  ~Sequence() { }
+  ~Sequence() = default;
 public:
   const std::string &GetName() const   { return name; }
   void SetName(const std::string &s)       { name = s; }

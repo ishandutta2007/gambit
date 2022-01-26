@@ -78,7 +78,7 @@ gbtLogitBehavList::gbtLogitBehavList(wxWindow *p_parent,
 }
 
 gbtLogitBehavList::~gbtLogitBehavList()
-{ }
+= default;
 
 wxString gbtLogitBehavList::GetCellValue(const wxSheetCoords &p_coords)
 {

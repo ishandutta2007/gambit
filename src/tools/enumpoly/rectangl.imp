@@ -51,8 +51,7 @@ template<class T> gRectangle<T>::gRectangle(const Gambit::Vector<T> lower_bd,
 
 
 template<class T> gRectangle<T>::~gRectangle() 
-{
-}
+= default;
 
 //--------------------------------------------------------------------------
 //                          rectangle -- operators
