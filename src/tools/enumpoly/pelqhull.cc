@@ -648,7 +648,7 @@ int qh_setequal_except (setT *setA, void *skipelemA, setT *setB, void *skipelemB
 
   elemA= SETaddr_(setA, void);
   elemB= SETaddr_(setB, void);
-  while (1) {
+  while (true) {
     if (*elemA == skipelemA) {
       skip++;
       elemA++;
@@ -686,7 +686,7 @@ int qh_setequal_skip (setT *setA, int skipA, setT *setB, int skipB) {
   elemB= SETaddr_(setB, void);
   skipAp= SETelemaddr_(setA, skipA, void);
   skipBp= SETelemaddr_(setB, skipB, void);
-  while (1) {
+  while (true) {
     if (elemA == skipAp)
       elemA++;
     if (elemB == skipBp)

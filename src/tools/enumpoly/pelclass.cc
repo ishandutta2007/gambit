@@ -561,12 +561,12 @@ bool PelView::CheckSolutions(const Gen_node g) const
   goo = g->Genval.lval;
   while (goo!=nullptr) { 
     if (Gambit::abs(goo->Genval.dval) > 0.01) 
-      return 0;
+      return false;
 
     goo = goo->next;
   }
 
-  return 1;
+  return true;
 }
 
 PelView::PelView(const gPolyList<double> &mylist):input(mylist)

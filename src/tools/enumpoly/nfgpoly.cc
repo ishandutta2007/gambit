@@ -148,8 +148,8 @@ int PolEnumModule::SaveSolutions(const Gambit::List<Gambit::Vector<double> > &li
 
 bool PolEnumModule::EqZero(double x) const
 {
-  if(x <= eps && x >= -eps) return 1;
-  return 0;
+  if(x <= eps && x >= -eps) return true;
+  return false;
 }     
 
 long PolEnumModule::NumEvals() const

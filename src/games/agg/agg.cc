@@ -761,7 +761,7 @@ AggNumber AGG::getSymMixedPayoff(int node, StrategyProfile &s)
     AggNumber prob = pow((support.at(0)>=0)?s[neighbors[node][support[0]]]:null_prob,
 		numPlayers-1);
 
-    while (1){
+    while (true){
       const vector<int>& comp = gc.get();
       config c(numNei, 0);
       for (size_t j=0;j<support.size(); ++j) { 
@@ -866,7 +866,7 @@ void AGG::getSymConfigProb(int plClass, StrategyProfile &s, int ownPlClass, int 
     AggNumber prob0=(support.at(0)>=0)?s[node2Action[neighbors[node].at(support[0])][p]]:null_prob;
     AggNumber prob = pow(prob0,numPl);
 
-    while (1){
+    while (true){
       const vector<int>& comp = gc.get();
       config c(numNei, 0);
       for (size_t j=0;j<support.size(); ++j) { 

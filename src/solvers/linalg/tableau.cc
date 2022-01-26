@@ -71,8 +71,8 @@ bool Tableau<double>::CanPivot(int outlabel, int col) const
 {
   const_cast<Tableau<double> *>(this)->SolveColumn(col, tmpcol);
   double val = tmpcol[basis.Find(outlabel)];
-  if(val <=eps2 && val >= -eps2) return 0;
-  return 1;  
+  if(val <=eps2 && val >= -eps2) return false;
+  return true;  
 }
 
 void Tableau<double>::Pivot(int outrow,int col)
@@ -166,9 +166,9 @@ bool Tableau<double>::IsLexMin()
       for(j=-MaxRow();j<Label(i);j++) if(j!=0){
 	SolveColumn(j,tmpcol);
 	if(LtZero(tmpcol[i]))
-	  return 0;
+	  return false;
       }
-  return 1;
+  return true;
 }
 
 
@@ -310,9 +310,9 @@ bool Tableau<Rational>::CanPivot(int outlabel, int col) const
 {
   const_cast<Tableau<Rational> *>(this)->MySolveColumn(col,tmpcol);
   Rational val = tmpcol[basis.Find(outlabel)];
-  if(val == (Rational)0) return 0;
+  if(val == (Rational)0) return false;
   //   if(val <=eps2 && val >= -eps2) return 0;
-  return 1;  
+  return true;  
 }
 
 void Tableau<Rational>::Pivot(int outrow,int in_col)
@@ -524,9 +524,9 @@ bool Tableau<Rational>::IsLexMin()
       for(j=-MaxRow();j<Label(i);j++) if(j!=0){
 	SolveColumn(j,tmpcol);
 	if(LtZero(tmpcol[i]))
-	  return 0;
+	  return false;
       }
-  return 1;
+  return true;
 }
 
 void Tableau<Rational>::BasisVector(Vector<Rational> &out) const

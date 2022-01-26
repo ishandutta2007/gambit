@@ -92,8 +92,8 @@ int HeuristicPolEnumModule::SaveSolutions(const Gambit::List<Vector<double> > &l
 
 bool HeuristicPolEnumModule::EqZero(double x) const
 {
-  if(x <= eps && x >= -eps) return 1;
-  return 0;
+  if(x <= eps && x >= -eps) return true;
+  return false;
 }     
 
 long HeuristicPolEnumModule::NumEvals() const
