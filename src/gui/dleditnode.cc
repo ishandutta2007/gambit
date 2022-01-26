@@ -163,7 +163,7 @@ dialogEditNode::dialogEditNode(wxWindow *p_parent, Gambit::GameNode p_node)
 Gambit::GameInfoset dialogEditNode::GetInfoset() const
 {
   if (m_infoset->GetSelection() == 0) {
-    return 0;
+    return nullptr;
   }
   else {
     return m_infosetList[m_infoset->GetSelection()];

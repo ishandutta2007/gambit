@@ -188,7 +188,7 @@ bool gbtStrategyDominanceStack::PreviousLevel()
 
 gbtGameDocument::gbtGameDocument(Gambit::Game p_game) 
   : m_game(p_game),
-    m_selectNode(0), m_modified(false),
+    m_selectNode(nullptr), m_modified(false),
     m_behavSupports(this, true), m_stratSupports(this, true),
     m_currentProfileList(0)
 {
@@ -417,7 +417,7 @@ void gbtGameDocument::Undo()
   m_redoList.Append(m_undoList[m_undoList.Length()]);
   m_undoList.Remove(m_undoList.Length());
 
-  m_game = 0;
+  m_game = nullptr;
 
   while (m_profiles.Length() > 0) {
     delete m_profiles.Remove(1);
@@ -440,7 +440,7 @@ void gbtGameDocument::Redo()
   m_undoList.Append(m_redoList[m_redoList.Length()]);
   m_redoList.Remove(m_redoList.Length());
 
-  m_game = 0;
+  m_game = nullptr;
 
   while (m_profiles.Length() > 0) {
     delete m_profiles.Remove(1);
@@ -813,7 +813,7 @@ void gbtGameDocument::DoSetOutcome(GameNode p_node, GameOutcome p_outcome)
 void gbtGameDocument::DoRemoveOutcome(GameNode p_node)
 {
   if (!p_node || !p_node->GetOutcome()) return;
-  p_node->SetOutcome(0);
+  p_node->SetOutcome(nullptr);
   UpdateViews(GBT_DOC_MODIFIED_PAYOFFS);
 }
 

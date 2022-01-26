@@ -62,7 +62,7 @@ template <class T> bool DVector<T>::Check(const DVector<T> &v) const
 //    DVector<T>: Constructors, destructor, and constructive operators
 //--------------------------------------------------------------------------
 
-template <class T> DVector<T>::DVector() : dvptr(0)
+template <class T> DVector<T>::DVector() : dvptr(nullptr)
 { }
 
 template <class T> DVector<T>::DVector(const PVector<int> &sig)

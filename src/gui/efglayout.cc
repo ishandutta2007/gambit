@@ -36,8 +36,8 @@
 //-----------------------------------------------------------------------
 
 gbtNodeEntry::gbtNodeEntry(Gambit::GameNode p_node)
-  : m_node(p_node), m_parent(0),
-    m_x(-1), m_y(-1), m_nextMember(0), m_inSupport(true),
+  : m_node(p_node), m_parent(nullptr),
+    m_x(-1), m_y(-1), m_nextMember(nullptr), m_inSupport(true),
     m_size(20), m_token(GBT_NODE_TOKEN_CIRCLE),
     m_branchStyle(GBT_BRANCH_STYLE_LINE), m_branchLabel(GBT_BRANCH_LABEL_HORIZONTAL),
     m_branchLength(0),
@@ -364,7 +364,7 @@ Gambit::GameNode gbtTreeLayout::NodeHitTest(int p_x, int p_y) const
       return m_nodeList[i]->GetNode();
     }
   }
-  return 0;
+  return nullptr;
 }
 
 Gambit::GameNode gbtTreeLayout::OutcomeHitTest(int p_x, int p_y) const
@@ -374,7 +374,7 @@ Gambit::GameNode gbtTreeLayout::OutcomeHitTest(int p_x, int p_y) const
       return m_nodeList[i]->GetNode();
     }
   }
-  return 0;
+  return nullptr;
 }
 
 Gambit::GameNode gbtTreeLayout::BranchAboveHitTest(int p_x, int p_y) const
@@ -384,7 +384,7 @@ Gambit::GameNode gbtTreeLayout::BranchAboveHitTest(int p_x, int p_y) const
       return m_nodeList[i]->GetNode()->GetParent();
     }
   }
-  return 0;
+  return nullptr;
 }
 
 Gambit::GameNode gbtTreeLayout::BranchBelowHitTest(int p_x, int p_y) const
@@ -394,7 +394,7 @@ Gambit::GameNode gbtTreeLayout::BranchBelowHitTest(int p_x, int p_y) const
       return m_nodeList[i]->GetNode()->GetParent();
     }
   }
-  return 0;
+  return nullptr;
 }
 
 Gambit::GameNode gbtTreeLayout::InfosetHitTest(int p_x, int p_y) const
@@ -415,7 +415,7 @@ Gambit::GameNode gbtTreeLayout::InfosetHitTest(int p_x, int p_y) const
       }
     }
   }
-  return 0;
+  return nullptr;
 }
 
 wxString gbtTreeLayout::CreateNodeLabel(const gbtNodeEntry *p_entry,
@@ -546,7 +546,7 @@ gbtNodeEntry *gbtTreeLayout::GetValidChild(Gambit::GameNode e)
       if (n) return n;
     }
   }
-  return 0;
+  return nullptr;
 }
 
 gbtNodeEntry *gbtTreeLayout::GetEntry(Gambit::GameNode p_node) const
@@ -556,7 +556,7 @@ gbtNodeEntry *gbtTreeLayout::GetEntry(Gambit::GameNode p_node) const
       return m_nodeList[i];
     }
   }
-  return 0;
+  return nullptr;
 }
 
 Gambit::GameNode gbtTreeLayout::PriorSameLevel(Gambit::GameNode p_node) const
@@ -568,7 +568,7 @@ Gambit::GameNode gbtTreeLayout::PriorSameLevel(Gambit::GameNode p_node) const
 	return m_nodeList[i]->GetNode();
     }
   }
-  return 0;
+  return nullptr;
 }
 
 Gambit::GameNode gbtTreeLayout::NextSameLevel(Gambit::GameNode p_node) const
@@ -581,7 +581,7 @@ Gambit::GameNode gbtTreeLayout::NextSameLevel(Gambit::GameNode p_node) const
       }
     }
   }
-  return 0;
+  return nullptr;
 }
 
 int gbtTreeLayout::LayoutSubtree(Gambit::GameNode p_node, const Gambit::BehaviorSupportProfile &p_support,
@@ -591,7 +591,7 @@ int gbtTreeLayout::LayoutSubtree(Gambit::GameNode p_node, const Gambit::Behavior
   const gbtStyle &settings = m_doc->GetStyle();
     
   gbtNodeEntry *entry = GetEntry(p_node);
-  entry->SetNextMember(0);
+  entry->SetNextMember(nullptr);
   if (m_doc->GetStyle().RootReachable() &&
       p_node->GetInfoset() && !p_node->GetInfoset()->GetPlayer()->IsChance()) {
     Gambit::GameInfoset infoset = p_node->GetInfoset();
@@ -682,7 +682,7 @@ gbtNodeEntry *gbtTreeLayout::NextInfoset(gbtNodeEntry *e)
       }
     }
   }
-  return 0;
+  return nullptr;
 }
 
 //

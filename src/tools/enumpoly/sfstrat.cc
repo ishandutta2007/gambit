@@ -49,7 +49,7 @@ SFSequenceSet::SFSequenceSet(const Gambit::GamePlayer &p)
   : efp(p), sequences()
 {
   Sequence *empty;
-  empty = new Sequence(p,0,0,1);
+  empty = new Sequence(p,nullptr,nullptr,1);
   AddSequence(empty);
 }
 
@@ -123,7 +123,7 @@ Sequence *SFSequenceSet::Find( int j )
     if(sequences[t]->GetNumber() == j) return sequences[t];
     t++;
   }
-  return 0;
+  return nullptr;
 }
 
 // Number of Sequences in a SFSequenceSet

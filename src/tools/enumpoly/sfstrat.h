@@ -45,7 +45,7 @@ public:
   Gambit::List<Gambit::GameAction> History() const;
   int GetNumber() const        { return number; }
   Gambit::GameAction GetAction() const  {return action; }
-  Gambit::GameInfoset GetInfoset() const   { if(action) return action->GetInfoset();return 0; }
+  Gambit::GameInfoset GetInfoset() const   { if(action) return action->GetInfoset();return nullptr; }
   Gambit::GamePlayer Player() const  { return player; }
   const Sequence *Parent() const   { return parent; }
 };

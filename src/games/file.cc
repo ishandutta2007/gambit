@@ -282,7 +282,7 @@ public:
 };
 
 TableFilePlayer::TableFilePlayer()
-  : m_next(0)
+  : m_next(nullptr)
 { }
 
 class TableFileGame {
@@ -302,7 +302,7 @@ public:
 };
 
 TableFileGame::TableFileGame()
-  : m_firstPlayer(0), m_lastPlayer(0), m_numPlayers(0)
+  : m_firstPlayer(nullptr), m_lastPlayer(nullptr), m_numPlayers(0)
 { }
 
 TableFileGame::~TableFileGame()
@@ -596,7 +596,7 @@ void ParseOutcomeBody(GameParserState &p_parser, GameRep *p_nfg)
       (*iter)->SetOutcome(p_nfg->GetOutcome(outcomeId));
     }
     else {
-      (*iter)->SetOutcome(0);
+      (*iter)->SetOutcome(nullptr);
     }
     p_parser.GetNextToken();
     iter++;

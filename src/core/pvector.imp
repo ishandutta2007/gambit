@@ -60,7 +60,7 @@ template <class T> int PVector<T>::Check(const PVector<T> &v) const
 //     PVector<T>: Constructors, destructor, and constructive operators
 //-------------------------------------------------------------------------
 
-template <class T> PVector<T>::PVector() : svptr(0)
+template <class T> PVector<T>::PVector() : svptr(nullptr)
 { }
 
 template <class T> PVector<T>::PVector(const Array<int> &sig)

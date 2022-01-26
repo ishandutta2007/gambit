@@ -290,7 +290,7 @@ void GameTableRep::WriteNfgFile(std::ostream &p_file) const
 
 GamePlayer GameTableRep::NewPlayer()
 {
-  GamePlayerRep *player = 0;
+  GamePlayerRep *player = nullptr;
   player = new GamePlayerRep(this, m_players.Length() + 1, 1);
   m_players.Append(player);
   for (int outc = 1; outc <= m_outcomes.Last(); outc++) {

@@ -100,7 +100,7 @@ gbtNashChoiceDialog::gbtNashChoiceDialog(wxWindow *p_parent,
 	    wxCommandEventHandler(gbtNashChoiceDialog::OnMethod));
   }
   else {
-    m_repChoice = 0;
+    m_repChoice = nullptr;
   }
 
   wxBoxSizer *buttonSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -163,14 +163,14 @@ void gbtNashChoiceDialog::OnMethod(wxCommandEvent &p_event)
 
 bool gbtNashChoiceDialog::UseStrategic() const
 {
-  return (m_repChoice == 0 ||
+  return (m_repChoice == nullptr ||
 	  m_repChoice->GetSelection() == 1);
 }
 
 gbtAnalysisOutput *gbtNashChoiceDialog::GetCommand() const
 {
   bool useEfg = m_repChoice && m_repChoice->GetSelection() == 0;
-  gbtAnalysisOutput *cmd = 0; 
+  gbtAnalysisOutput *cmd = nullptr; 
 
   wxString method = m_methodChoice->GetStringSelection();
 

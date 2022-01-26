@@ -138,14 +138,14 @@ static Gambit::GameNode GetNode(Gambit::GameNode p_node, int p_id)
     return p_node;
   }
   else if (p_node->NumChildren() == 0) {
-    return 0;
+    return nullptr;
   }
   else {
     for (int i = 1; i <= p_node->NumChildren(); i++) {
       Gambit::GameNode node = GetNode(p_node->GetChild(i), p_id);
       if (node) return node;
     }
-    return 0;
+    return nullptr;
   }
 }
 
@@ -234,7 +234,7 @@ bool gbtPlayerDropTarget::OnDropMoveOutcome(Gambit::GameNode p_node,
   Gambit::GameNode srcNode = GetNode(m_model->GetGame()->GetRoot(), n);
   if (!srcNode || p_node == srcNode)  return false;
   m_model->DoSetOutcome(p_node, srcNode->GetOutcome());
-  m_model->DoSetOutcome(srcNode, 0);
+  m_model->DoSetOutcome(srcNode, nullptr);
   return true;
 }
 
@@ -366,35 +366,35 @@ void gbtEfgDisplay::MakeMenus()
 static Gambit::GameNode PriorSameIset(const Gambit::GameNode &n)
 {
   Gambit::GameInfoset iset = n->GetInfoset();
-  if (!iset) return 0;
+  if (!iset) return nullptr;
   for (int i = 1; i <= iset->NumMembers(); i++) {
     if (iset->GetMember(i) == n) {
       if (i > 1) {
 	return iset->GetMember(i-1);
       } 
       else {
-	return 0;
+	return nullptr;
       }
     }
   }
-  return 0;
+  return nullptr;
 }
 
 static Gambit::GameNode NextSameIset(const Gambit::GameNode &n)
 {
   Gambit::GameInfoset iset = n->GetInfoset();
-  if (!iset) return 0;
+  if (!iset) return nullptr;
   for (int i = 1; i <= iset->NumMembers(); i++) {
     if (iset->GetMember(i) == n) {
       if (i < iset->NumMembers()) {
 	return iset->GetMember(i+1); 
       }
       else {
-	return 0;
+	return nullptr;
       }
     }
   }
-  return 0;
+  return nullptr;
 }
 
 //
@@ -579,7 +579,7 @@ void gbtEfgDisplay::OnUpdate()
   if (m_doc->GetSelectNode()) {
     gbtNodeEntry *entry = m_layout.GetNodeEntry(m_doc->GetSelectNode());
     if (!entry) {
-      m_doc->SetSelectNode(0);
+      m_doc->SetSelectNode(nullptr);
     }
   }
 

@@ -209,11 +209,11 @@ Gambit::GameInfoset gbtInsertMoveDialog::GetInfoset() const
       return player->GetInfoset(infosetNumber);
     }
     else {
-      return 0;
+      return nullptr;
     }
   }
   else {
-    return 0;
+    return nullptr;
   }
 }
 

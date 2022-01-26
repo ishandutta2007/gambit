@@ -35,7 +35,7 @@ namespace Gambit {
 
 GameOutcomeRep::GameOutcomeRep(GameRep *p_game, int p_number)
   : m_game(p_game), m_number(p_number),
-    m_payoffs(m_game->NumPlayers()), m_unrestricted(0)
+    m_payoffs(m_game->NumPlayers()), m_unrestricted(nullptr)
 { }
 
 
@@ -61,7 +61,7 @@ void GameStrategyRep::DeleteStrategy()
 //========================================================================
 
 GamePlayerRep::GamePlayerRep(GameRep *p_game, int p_id, int p_strats)
-  : m_game(p_game), m_number(p_id), m_strategies(p_strats), m_unrestricted(0)
+  : m_game(p_game), m_number(p_id), m_strategies(p_strats), m_unrestricted(nullptr)
 { 
   for (int j = 1; j <= p_strats; j++) {
     m_strategies[j] = new GameStrategyRep(this);
@@ -126,7 +126,7 @@ void GamePlayerRep::MakeReducedStrats(GameTreeNodeRep *n, GameTreeNodeRep *nn)
   int i;
   GameTreeNodeRep *m, *mm;
 
-  if (!n->GetParent())  n->ptr = 0;
+  if (!n->GetParent())  n->ptr = nullptr;
 
   if (n->NumChildren() > 0)  {
     if (n->infoset->m_player == this)  {
@@ -147,8 +147,8 @@ void GamePlayerRep::MakeReducedStrats(GameTreeNodeRep *n, GameTreeNodeRep *nn)
       }
     }
     else  {
-      n->ptr = NULL;
-      if (nn != NULL)
+      n->ptr = nullptr;
+      if (nn != nullptr)
 	n->ptr = nn->m_parent;
       n->whichbranch = n->children[1];
       if (n->infoset)
@@ -159,12 +159,12 @@ void GamePlayerRep::MakeReducedStrats(GameTreeNodeRep *n, GameTreeNodeRep *nn)
   else if (nn)  {
     for (; ; nn = nn->m_parent->ptr->whichbranch)  {
       if (!nn->GetNextSibling()) {
-	m = 0;
+	m = nullptr;
       }
       else {
 	m = dynamic_cast<GameTreeNodeRep *>(nn->GetNextSibling().operator->());
       }
-      if (m || nn->m_parent->ptr == NULL)   break;
+      if (m || nn->m_parent->ptr == nullptr)   break;
     }
     if (m)  {
       mm = m->m_parent->whichbranch;
