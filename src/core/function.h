@@ -49,8 +49,8 @@ protected:
 
 class FunctionMinimizerError : public Exception {
 public:
-  virtual ~FunctionMinimizerError() throw() { }
-  const char *what() const throw() 
+  virtual ~FunctionMinimizerError() noexcept { }
+  const char *what() const noexcept 
   { return "Internal error in function minimization"; }
 };
 

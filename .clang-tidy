@@ -2,7 +2,8 @@
 Checks: |
   -*,
   modernize-deprecated-headers,
-  modernize-redundant-void-arg
+  modernize-redundant-void-arg,
+  modernize-use-noexcept
 WarningsAsErrors: ''
 # Don't bother with wxWidgets headers
 HeaderFilterRegex: '/src/'
