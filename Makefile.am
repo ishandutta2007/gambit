@@ -791,5 +791,9 @@ msw-msi:
 	light -ext WixUIExtension gambit.wixobj
 
 clang-tidy:
-	clang-tidy src/*/*.cc src/*/*/*.cc -- -I src -I src/labenski/include -DVERSION="" ${WX_CXXFLAGS}
+	clang-tidy src/core/*.cc -- -I src -I src/labenski/include -DVERSION="" ${WX_CXXFLAGS}
+	clang-tidy src/games/*.cc src/games/*/*.cc -- -I src -I src/labenski/include -DVERSION="" ${WX_CXXFLAGS}
+	clang-tidy src/solvers/*/*.cc -- -I src -I src/labenski/include -DVERSION="" ${WX_CXXFLAGS}
+	clang-tidy src/tools/*/*.cc -- -I src -I src/labenski/include -DVERSION="" ${WX_CXXFLAGS}
+	clang-tidy src/gui/*.cc -- -I src -I src/labenski/include -DVERSION="" ${WX_CXXFLAGS}
 

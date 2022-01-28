@@ -50,7 +50,7 @@ public:
   /// Constructor; initializes reference count
   GameObject() : m_refCount(0), m_valid(true) { }
   /// Destructor
-  virtual ~GameObject() { }
+  virtual ~GameObject() = default;
   //@}
 
   /// @name Validation
@@ -76,8 +76,8 @@ public:
 /// An exception thrown when attempting to dereference an invalidated object 
 class InvalidObjectException : public Exception {
 public:
-  virtual ~InvalidObjectException() throw() { }
-  const char *what() const throw()  { return "Dereferencing an invalidated object"; }
+  virtual ~InvalidObjectException() noexcept = default;
+  const char *what() const noexcept  { return "Dereferencing an invalidated object"; }
 };
 
 
@@ -91,7 +91,7 @@ private:
   T *rep;
 
 public:
-  GameObjectPtr(T *r = 0) : rep(r)
+  GameObjectPtr(T *r = nullptr) : rep(r)
     { if (rep) rep->IncRef(); }
   GameObjectPtr(const GameObjectPtr<T> &r) : rep(r.rep)
     { if (rep) rep->IncRef(); }
@@ -171,14 +171,14 @@ class UndefinedException : public Exception {
 public:
   UndefinedException() : Exception("Undefined operation on game") { }
   UndefinedException(const std::string &s) : Exception(s) { }
-  virtual ~UndefinedException() throw() { }
+  virtual ~UndefinedException() noexcept = default;
 };
 
 /// Exception thrown on an operation between incompatible objects
 class MismatchException : public Exception {
 public:
-  virtual ~MismatchException() throw() { }
-  const char *what() const throw()  
+  virtual ~MismatchException() noexcept = default;
+  const char *what() const noexcept  
   { return "Operation between objects in different games"; }
 };
 
@@ -187,7 +187,7 @@ class InvalidFileException : public Exception {
 public:
   InvalidFileException() : Exception("File not in a recognized format") { }
   InvalidFileException(const std::string &s) : Exception(s) { } 
-  virtual ~InvalidFileException() throw() { }
+  virtual ~InvalidFileException() noexcept = default;
 };
 
 //=======================================================================
@@ -216,7 +216,7 @@ private:
   //@{
   /// Creates a new outcome object, with payoffs set to zero
   GameOutcomeRep(GameRep *p_game, int p_number);
-  virtual ~GameOutcomeRep() { }
+  virtual ~GameOutcomeRep() = default;
   //@}
 
 public:
@@ -255,8 +255,8 @@ class GameActionRep : public GameObject {
 protected:
   GameAction m_unrestricted;
 
-  GameActionRep() : m_unrestricted(0) { }
-  virtual ~GameActionRep() { }
+  GameActionRep() : m_unrestricted(nullptr) { }
+  virtual ~GameActionRep() = default;
 
 public:
   virtual int GetNumber() const = 0;
@@ -280,8 +280,8 @@ class GameInfosetRep : public GameObject {
 protected:
   GameInfoset m_unrestricted;
  
-  GameInfosetRep(): m_unrestricted(0) { }
-  virtual ~GameInfosetRep() { }
+  GameInfosetRep(): m_unrestricted(nullptr) { }
+  virtual ~GameInfosetRep() = default;
 
 public:
   virtual Game GetGame() const = 0;
@@ -295,7 +295,7 @@ public:
   virtual void SetLabel(const std::string &p_label) = 0;
   virtual const std::string &GetLabel() const = 0;
   
-  virtual GameAction InsertAction(GameAction p_where = 0) = 0;
+  virtual GameAction InsertAction(GameAction p_where = nullptr) = 0;
 
   /// @name Actions
   //@{
@@ -359,7 +359,7 @@ private:
   //@{
   /// Creates a new strategy for the given player.
   GameStrategyRep(GamePlayerRep *p_player)
-    : m_number(0), m_id(0), m_player(p_player), m_offset(0L), m_unrestricted(0) { }
+    : m_number(0), m_id(0), m_player(p_player), m_offset(0L), m_unrestricted(nullptr) { }
   //@}
 
 public:
@@ -418,7 +418,7 @@ private:
   GamePlayer m_unrestricted;
 
   GamePlayerRep(GameRep *p_game, int p_id) 
-    : m_game(p_game), m_number(p_id), m_unrestricted(0) { }
+    : m_game(p_game), m_number(p_id), m_unrestricted(nullptr) { }
   GamePlayerRep(GameRep *p_game, int p_id, int m_strats);
   ~GamePlayerRep();
 
@@ -461,8 +461,8 @@ class GameNodeRep : public GameObject {
 protected:
   GameNode m_unrestricted;
 
-  GameNodeRep() : m_unrestricted(0) { }
-  virtual ~GameNodeRep() { }
+  GameNodeRep() : m_unrestricted(nullptr) { }
+  virtual ~GameNodeRep() = default;
 
 public:
   virtual Game GetGame() const = 0; 
@@ -534,7 +534,7 @@ protected:
   virtual PureStrategyProfileRep *Copy() const = 0;
 
 public:
-  virtual ~PureStrategyProfileRep() { }
+  virtual ~PureStrategyProfileRep() = default;
   
   /// @name Data access and manipulation
   //@{
@@ -660,7 +660,7 @@ class GameRep : public GameObject {
 protected:
   std::string m_title, m_comment;
 
-  GameRep() { }
+  GameRep() = default;
 
   /// @name Managing the representation
   //@{
@@ -679,7 +679,7 @@ public:
   /// @name Lifecycle
   //@{
   /// Clean up the game
-  virtual ~GameRep() { }
+  virtual ~GameRep() = default;
   /// Create a copy of the game, as a new game
   virtual Game Copy() const = 0;
   //@}

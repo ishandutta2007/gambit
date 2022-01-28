@@ -35,7 +35,7 @@ public:
   StrategySupportProfile m_support;
 
   MixedStrategyProfileRep(const StrategySupportProfile &);
-  virtual ~MixedStrategyProfileRep() { }
+  virtual ~MixedStrategyProfileRep() = default;
   virtual MixedStrategyProfileRep<T> *Copy() const = 0;
 
   void SetCentroid();
@@ -61,7 +61,7 @@ public:
     : MixedStrategyProfileRep<T>(p_support)
   { }
   TreeMixedStrategyProfileRep(const MixedBehaviorProfile<T> &);
-  virtual ~TreeMixedStrategyProfileRep() { }
+  virtual ~TreeMixedStrategyProfileRep() = default;
   
   virtual MixedStrategyProfileRep<T> *Copy() const;
   virtual T GetPayoff(int pl) const;
@@ -88,7 +88,7 @@ public:
   TableMixedStrategyProfileRep(const StrategySupportProfile &p_support)
     : MixedStrategyProfileRep<T>(p_support)
   { }
-  virtual ~TableMixedStrategyProfileRep() { }
+  virtual ~TableMixedStrategyProfileRep() = default;
 
   virtual MixedStrategyProfileRep<T> *Copy() const;
   virtual T GetPayoff(int pl) const;
@@ -103,7 +103,7 @@ public:
   AggMixedStrategyProfileRep(const StrategySupportProfile &p_support)
    : MixedStrategyProfileRep<T>(p_support)
     { }
-  virtual ~AggMixedStrategyProfileRep() { }
+  virtual ~AggMixedStrategyProfileRep() = default;
 
   virtual MixedStrategyProfileRep<T> *Copy() const {
     return new AggMixedStrategyProfileRep(*this);
@@ -120,7 +120,7 @@ public:
   BagentMixedStrategyProfileRep(const StrategySupportProfile &p_support)
     : MixedStrategyProfileRep<T>(p_support)
     { }
-  virtual ~BagentMixedStrategyProfileRep() { }
+  virtual ~BagentMixedStrategyProfileRep() = default;
 
   virtual MixedStrategyProfileRep<T> *Copy() const {
     return new BagentMixedStrategyProfileRep(*this);

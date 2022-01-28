@@ -63,7 +63,7 @@ public:
 
   /// @name Interface with restricted game mechanism
   //@{
-  virtual bool IsRestriction() const { return (m_unrestricted != 0); }
+  virtual bool IsRestriction() const { return (m_unrestricted != nullptr); }
   virtual Game Unrestrict() const 
   { if (m_unrestricted) return m_unrestricted; else throw UndefinedException(); }
   //@}

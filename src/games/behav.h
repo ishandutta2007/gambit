@@ -80,7 +80,7 @@ public:
   MixedBehaviorProfile(const BehaviorSupportProfile &);
   MixedBehaviorProfile(const MixedBehaviorProfile<T> &);
   MixedBehaviorProfile(const MixedStrategyProfile<T> &);
-  ~MixedBehaviorProfile() { }
+  ~MixedBehaviorProfile() = default;
 
   MixedBehaviorProfile<T> &operator=(const MixedBehaviorProfile<T> &);
   MixedBehaviorProfile<T> &operator=(const Vector<T> &p)

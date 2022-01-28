@@ -42,7 +42,7 @@ private:
   GameTreeActionRep(int p_number, const std::string &p_label, 
 		    GameTreeInfosetRep *p_infoset)
     : m_number(p_number), m_label(p_label), m_infoset(p_infoset) { }
-  virtual ~GameTreeActionRep()   { }
+  virtual ~GameTreeActionRep()   = default;
 
 public:
   int GetNumber() const { return m_number; }
@@ -96,7 +96,7 @@ public:
   virtual void SetLabel(const std::string &p_label) { m_label = p_label; }
   virtual const std::string &GetLabel() const { return m_label; }
   
-  virtual GameAction InsertAction(GameAction p_where = 0);
+  virtual GameAction InsertAction(GameAction p_where = nullptr);
 
   /// @name Actions
   //@{
@@ -168,7 +168,7 @@ public:
 
   virtual bool IsTerminal() const { return (children.Length() == 0); }
   virtual GamePlayer GetPlayer() const
-    { return (infoset) ? infoset->GetPlayer() : 0; }
+    { return (infoset) ? infoset->GetPlayer() : nullptr; }
   virtual GameAction GetPriorAction() const; // returns null if root node
   virtual GameNode GetChild(int i) const    { return children[i]; }
   virtual GameNode GetParent() const    { return m_parent; }

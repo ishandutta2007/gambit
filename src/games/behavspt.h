@@ -56,7 +56,7 @@ public:
   //@{
   /// Constructor.  By default, a support contains all strategies. 
   BehaviorSupportProfile(const Game &);
-  ~BehaviorSupportProfile() { }
+  ~BehaviorSupportProfile() = default;
 
   //@}
 

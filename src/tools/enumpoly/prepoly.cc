@@ -210,16 +210,6 @@ exp_vect::exp_vect(const exp_vect* p)
 {
 }
 
-exp_vect::exp_vect(const exp_vect & p)
- 
-= default;
-
-exp_vect::~exp_vect()
-{
-  //  gout << "Gotcha!\n";
-}
-
-
 
 //-------------------------
 //        Operators
@@ -571,16 +561,6 @@ term_order::term_order(const gSpace* p, ORD_PTR act_ord)
 : Space(p), actual_order(act_ord)
 {
 }
-
-term_order::term_order(const term_order & p)
- 
-= default;
-
-term_order::~term_order()
-{
-  //  gout << "Sihonara, sucker ... \n";
-}
-
 
 
 //-------------------------
