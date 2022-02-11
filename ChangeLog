@@ -1,8 +1,15 @@
-## Unreleased
+## [16.1.0] - Unreleased
+
+### General
+- Documented support in Python for estimating quantal response equilibria using
+  either fixed-point or empirical payoff methods
+
+## [16.0.3] - Unreleased
 
 ### General
 - C++11 features are now actively used.
-
+	
+	
 ## [16.0.2] - 2022-01-28
 
 ### Fixed
