@@ -71,8 +71,8 @@ protected:
   std::string m_label;
   GamePlayerRep *m_player;
   Array<GameTreeActionRep *> m_actions;
-  Array<GameTreeNodeRep *> m_members;
-  int flag, whichbranch{0};
+  std::vector<GameTreeNodeRep *> m_members;
+  int flag{0}, whichbranch{0};
   Array<Number> m_probs;
 
   GameTreeInfosetRep(GameTreeRep *p_efg, int p_number, GamePlayerRep *p_player, int p_actions);
@@ -108,14 +108,14 @@ public:
   /// @name Actions
   //@{
   /// Returns the number of actions available at the information set
-  int NumActions() const override { return m_actions.size(); }
+  size_t NumActions() const override { return m_actions.size(); }
   /// Returns the p_index'th action at the information set
   GameAction GetAction(int p_index) const override { return m_actions[p_index]; }
   /// Returns the actions available at the information set
   Array<GameAction> GetActions() const override;
   //@}
 
-  int NumMembers() const override { return m_members.size(); }
+  size_t NumMembers() const override { return m_members.size(); }
   GameNode GetMember(int p_index) const override;
   Array<GameNode> GetMembers() const override;
 
@@ -140,12 +140,12 @@ class GameTreeNodeRep : public GameNodeRep {
   template <class T> friend class MixedBehaviorProfile;
 
 protected:
-  int m_number;
+  int m_number{0};
   GameTreeRep *m_efg;
   std::string m_label;
-  GameTreeInfosetRep *m_infoset;
+  GameTreeInfosetRep *m_infoset{nullptr};
   GameTreeNodeRep *m_parent;
-  GameOutcomeRep *m_outcome;
+  GameOutcomeRep *m_outcome{nullptr};
   Array<GameTreeNodeRep *> m_children;
   GameTreeNodeRep *whichbranch{nullptr}, *ptr{nullptr};
 
@@ -162,7 +162,7 @@ public:
   void SetLabel(const std::string &p_label) override { m_label = p_label; }
 
   int GetNumber() const override { return m_number; }
-  int NumChildren() const override { return m_children.size(); }
+  size_t NumChildren() const override { return m_children.size(); }
   GameNode GetChild(int i) const override { return m_children[i]; }
   GameNode GetChild(const GameAction &p_action) const override
   {
@@ -210,7 +210,7 @@ class GameTreeRep : public GameExplicitRep {
   friend class GameTreeActionRep;
 
 protected:
-  mutable bool m_computedValues, m_doCanon;
+  mutable bool m_computedValues{false}, m_doCanon{true};
   GameTreeNodeRep *m_root;
   GamePlayerRep *m_chance;
 
@@ -265,14 +265,14 @@ public:
   /// Returns the root node of the game
   GameNode GetRoot() const override { return m_root; }
   /// Returns the number of nodes in the game
-  int NumNodes() const override;
+  size_t NumNodes() const override;
   //@}
 
   void DeleteOutcome(const GameOutcome &) override;
 
   /// @name Writing data files
   //@{
-  void WriteEfgFile(std::ostream &, const GameNode &p_node = 0) const override;
+  void WriteEfgFile(std::ostream &, const GameNode &p_node = nullptr) const override;
   void WriteNfgFile(std::ostream &) const override;
   //@}
 
@@ -320,10 +320,11 @@ public:
   T GetPayoffDeriv(int pl, const GameStrategy &) const override;
   T GetPayoffDeriv(int pl, const GameStrategy &, const GameStrategy &) const override;
 
-  void InvalidateCache() const override;
-
-protected:
+private:
   mutable std::shared_ptr<MixedBehaviorProfile<T>> mixed_behav_profile_sptr;
+
+  void MakeBehavior() const;
+  void InvalidateCache() const override;
 };
 
 } // namespace Gambit
